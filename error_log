@@ -1,0 +1,6 @@
+[31-May-2017 04:07:18 America/Chicago] HTTP 404 (GET /css/index.css)
+[31-May-2017 04:07:18 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
+[31-May-2017 04:07:18 America/Chicago] [328/hug-a-tree/index.php:24] Base->run()
+[31-May-2017 04:07:58 America/Chicago] HTTP 404 (GET /css/index.css)
+[31-May-2017 04:07:58 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
+[31-May-2017 04:07:58 America/Chicago] [328/hug-a-tree/index.php:24] Base->run()

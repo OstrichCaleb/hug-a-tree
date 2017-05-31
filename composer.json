@@ -1,0 +1,16 @@
+{
+	"name": "328/hug-a-tree",
+	"authors":[
+		{
+			"name": "Caleb Strander",
+			"email": "Costrander@mail.greenriver.edu"
+		},
+		{
+			"name": "Duc(k) Nguyen",
+			"email": "dnguyen94@mail.greenriver.edu"
+		}
+	],
+	"require":{
+		"bcosca/fatfree-core": "dev-master"
+	}
+}

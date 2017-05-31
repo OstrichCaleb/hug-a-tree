@@ -1,0 +1,14 @@
+#logo img{
+    height:160px;
+    width:180px;
+    margin-top:-3em;
+}
+.navbar .nav li{
+    height:5em;
+}
+.navbar-default {
+    margin-top:3em;
+}
+.container-fluid{
+    background-color:#F9E79F;
+}
