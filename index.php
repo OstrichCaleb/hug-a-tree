@@ -4,6 +4,7 @@
 	
 	/*
 	 * Name: Duck Nguyen
+	 * Name: Caleb Ostrander
 	 * Filename: index.php
 	*/
 	
@@ -19,8 +20,7 @@
 	//Define a default route
 	$f3->route('GET /',
 			function($f3){
-				$view = new View;
-				echo $view->render('pages/index.html');
+				echo Template::instance()->render('pages/index.html');
 			 });
 	
 	// run fat-free
