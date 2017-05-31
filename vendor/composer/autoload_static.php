@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitafb34f465e8d8d173fed9e98994808be
+class ComposerStaticInit66e281bbe22a3cb1b2e782cb05e472f1
 {
     public static $classMap = array (
         'Audit' => __DIR__ . '/..' . '/bcosca/fatfree-core/audit.php',
@@ -26,6 +26,7 @@ class ComposerStaticInitafb34f465e8d8d173fed9e98994808be
         'DB\\SQL\\Mapper' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/mapper.php',
         'DB\\SQL\\Session' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/session.php',
         'F3' => __DIR__ . '/..' . '/bcosca/fatfree-core/f3.php',
+        'HugATreeDB' => __DIR__ . '/../..' . '/model/hug-a-tree-db.php',
         'ISO' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Image' => __DIR__ . '/..' . '/bcosca/fatfree-core/image.php',
         'Log' => __DIR__ . '/..' . '/bcosca/fatfree-core/log.php',
@@ -53,7 +54,7 @@ class ComposerStaticInitafb34f465e8d8d173fed9e98994808be
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitafb34f465e8d8d173fed9e98994808be::$classMap;
+            $loader->classMap = ComposerStaticInit66e281bbe22a3cb1b2e782cb05e472f1::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -9,7 +9,7 @@
 	*/
 	
 	// Create our database model object
-	$bloggerDB = new BloggerDB();
+	$hugDB = new HugATreeDB();
 	
 	// create an instance of the Base class
 	$f3 = Base::instance();

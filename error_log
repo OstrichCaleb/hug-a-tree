@@ -4,3 +4,22 @@
 [31-May-2017 04:07:58 America/Chicago] HTTP 404 (GET /css/index.css)
 [31-May-2017 04:07:58 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [31-May-2017 04:07:58 America/Chicago] [328/hug-a-tree/index.php:24] Base->run()
+[31-May-2017 17:38:06 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'BloggerDB' not found in /home/costrander/public_html/328/hug-a-tree/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 12
+[31-May-2017 17:38:13 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'BloggerDB' not found in /home/costrander/public_html/328/hug-a-tree/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 12
+[31-May-2017 17:39:04 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'HugATreeDB' not found in /home/costrander/public_html/328/hug-a-tree/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 12
+[31-May-2017 17:42:58 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Base' not found in /home/costrander/public_html/328/hug-a-tree/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 15
+[31-May-2017 17:46:19 America/Chicago] HTTP 404 (GET /css/index.css)
+[31-May-2017 17:46:19 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
+[31-May-2017 17:46:19 America/Chicago] [328/hug-a-tree/index.php:27] Base->run()

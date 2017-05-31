@@ -25,6 +25,7 @@ return array(
     'DB\\SQL\\Mapper' => $vendorDir . '/bcosca/fatfree-core/db/sql/mapper.php',
     'DB\\SQL\\Session' => $vendorDir . '/bcosca/fatfree-core/db/sql/session.php',
     'F3' => $vendorDir . '/bcosca/fatfree-core/f3.php',
+    'HugATreeDB' => $baseDir . '/model/hug-a-tree-db.php',
     'ISO' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'Image' => $vendorDir . '/bcosca/fatfree-core/image.php',
     'Log' => $vendorDir . '/bcosca/fatfree-core/log.php',

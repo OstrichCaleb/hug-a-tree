@@ -18,7 +18,7 @@
 </head>
 
 <body
-    <include href="includes/nav.inc.html"/>
+    <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
