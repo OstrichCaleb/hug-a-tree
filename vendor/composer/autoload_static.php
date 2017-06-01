@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit66e281bbe22a3cb1b2e782cb05e472f1
 {
     public static $classMap = array (
-        'Activity' => __DIR__ . '/../..' . '/classes/activities.php',
+        'Activity' => __DIR__ . '/../..' . '/model/activities.php',
         'Audit' => __DIR__ . '/..' . '/bcosca/fatfree-core/audit.php',
         'Auth' => __DIR__ . '/..' . '/bcosca/fatfree-core/auth.php',
         'Base' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
@@ -26,6 +26,7 @@ class ComposerStaticInit66e281bbe22a3cb1b2e782cb05e472f1
         'DB\\SQL' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql.php',
         'DB\\SQL\\Mapper' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/mapper.php',
         'DB\\SQL\\Session' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/session.php',
+        'Dog' => __DIR__ . '/../..' . '/model/admin-user.php',
         'F3' => __DIR__ . '/..' . '/bcosca/fatfree-core/f3.php',
         'HugATreeDB' => __DIR__ . '/../..' . '/model/hug-a-tree-db.php',
         'ISO' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
@@ -42,6 +43,7 @@ class ComposerStaticInit66e281bbe22a3cb1b2e782cb05e472f1
         'Template' => __DIR__ . '/..' . '/bcosca/fatfree-core/template.php',
         'Test' => __DIR__ . '/..' . '/bcosca/fatfree-core/test.php',
         'UTF' => __DIR__ . '/..' . '/bcosca/fatfree-core/utf.php',
+        'User' => __DIR__ . '/../..' . '/model/user.php',
         'View' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Web' => __DIR__ . '/..' . '/bcosca/fatfree-core/web.php',
         'Web\\Geo' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/geo.php',
