@@ -18,62 +18,62 @@
             $this->_pictures = $pictures;
         }
         
-        public function get_title()
+        public function getTitle()
         {
           return $this->_title;
         }
       
-        public function set_title($title)
+        public function setTitle($title)
         {
           $this->_title = $title;
         }
       
-        public function get_description()
+        public function getDescription()
         {
           return $this->_description;
         }
       
-        public function set_description($description)
+        public function setDescription($description)
         {
           $this->_description = $description;
         }
       
-        public function get_location()
+        public function getLocation()
         {
           return $this->_location;
         }
       
-        public function set_location($location)
+        public function setLocation($location)
         {
           $this->_location = $location;
         }
       
-        public function get_warning()
+        public function getWarning()
         {
           return $this->_warning;
         }
       
-        public function set_warning($warning)
+        public function setWarning($warning)
         {
           $this->_warning = $warning;
         }
       
-        public function get_options()
+        public function getOptions()
         {
           return $this->_options;
         }
       
-        public function set_options($options)
+        public function setOptions($options)
         {
           $this->_options = $options;
         }
       
-        public function get_pictures()
+        public function getPictures()
         {
           return $this->_pictures;
         }
       
-        public function set_pictures($pictures)
+        public function setPictures($pictures)
         {
           $this->_pictures = $pictures;
         }
