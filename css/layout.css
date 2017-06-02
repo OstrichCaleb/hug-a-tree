@@ -1,14 +1,84 @@
+body,html{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.top-wrapper{
+    font-size:17px;
+    background-color: #CDDC39;
+    height:2em;
+}
+.top-wrapper .nav > li{
+    margin-top:-0.5em;
+}
+.top-wrapper .nav{
+    margin-right:2em;
+}
+.nav > li > a{
+    color:#795548;
+}
+.nav > li > a:hover{
+    color:#FF9800;
+    background-color: #CDDC39;
+}
+
+form{
+    margin-top:0.4em;
+    margin-right:0;
+}
+
+
+.navbar-default{
+    height:3em;
+    background-color: #FEF9E7;
+    border: #FFE082;
+    opacity: 0.9;
+    font-size:20px;
+}
+.navbar-default .navbar-nav > li > a{
+    color:#795548;
+}
+.navbar-default .navbar-nav > li > a:hover{
+    color:#FF9800;
+}
+
 #logo img{
     height:160px;
     width:180px;
-    margin-top:-3em;
+    margin-top:-2em;
 }
-.navbar .nav li{
-    height:5em;
+
+footer{
+    margin-top:10em;
+	background-color:#003029;
+	padding-bottom: 1.5em;
+    color:white;
 }
-.navbar-default {
-    margin-top:3em;
+footer h3{
+    color:#CDDC39;
+    border-top:5px solid #CDDC39;
+    padding-top:0.5em;
+    margin: 1em 4em 0 0;
 }
-.container-fluid{
-    background-color:#F9E79F;
+.footer-left a,
+.footer-left a:hover{
+    color:white;
+    text-decoration: none;
 }
+.footer-left .fa{
+    margin-right:0.4em;
+    font-size:18px;
+}
+.fa-linkedin-square:hover{
+    color:#1F618D;
+}
+.fa-envelope:hover{
+    color:#F4D03F;
+}
+.fa-globe:hover{
+    color:#3498DB;
+}
+.footer-right img{
+    margin-top:1.5em;
+    height:140px;
+    width:160px;
+}
+
