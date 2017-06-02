@@ -15,14 +15,12 @@ $f3->set('DEBUG', 3);
 
 //Define a default route
 $f3->route('GET /', function($f3){
-	$view = new View;
-	echo $view->render('pages/index.html');
+	echo Template::instance()->render('pages/home.html');
  });
 
  //Route to hiking page
 $f3->route('GET /hiking', function($f3){
-	$view = new View;
-	echo $view->render('pages/hiking.html');
+	echo Template::instance()->render('pages/hiking.html');
  });
 // run fat-free
 $f3->run();

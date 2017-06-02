@@ -4,6 +4,7 @@
 [31-May-2017 04:07:58 America/Chicago] HTTP 404 (GET /css/index.css)
 [31-May-2017 04:07:58 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [31-May-2017 04:07:58 America/Chicago] [328/hug-a-tree/index.php:24] Base->run()
+<<<<<<< HEAD
 [31-May-2017 04:12:49 America/Chicago] HTTP 404 (GET /css/index.css)
 [31-May-2017 04:12:49 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [31-May-2017 04:12:49 America/Chicago] [328/hug-a-tree/index.php:24] Base->run()
@@ -1153,3 +1154,45 @@
 [01-Jun-2017 17:24:41 America/Chicago] HTTP 404 (GET /ducky/pics/dlara.png)
 [01-Jun-2017 17:24:41 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [01-Jun-2017 17:24:41 America/Chicago] [328/hug-a-tree/index.php:28] Base->run()
+=======
+[31-May-2017 17:38:06 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'BloggerDB' not found in /home/costrander/public_html/328/hug-a-tree/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 12
+[31-May-2017 17:38:13 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'BloggerDB' not found in /home/costrander/public_html/328/hug-a-tree/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 12
+[31-May-2017 17:39:04 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'HugATreeDB' not found in /home/costrander/public_html/328/hug-a-tree/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 12
+[31-May-2017 17:42:58 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Base' not found in /home/costrander/public_html/328/hug-a-tree/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/costrander/public_html/328/hug-a-tree/index.php on line 15
+[31-May-2017 17:46:19 America/Chicago] HTTP 404 (GET /css/index.css)
+[31-May-2017 17:46:19 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
+[31-May-2017 17:46:19 America/Chicago] [328/hug-a-tree/index.php:27] Base->run()
+>>>>>>> 5f9c9abbb24d29af54bbe7758045096061387c25
+[01-Jun-2017 19:55:16 America/Chicago] Unable to open pages/index.html
+[01-Jun-2017 19:55:16 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[01-Jun-2017 19:55:16 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:2934] user_error()
+[01-Jun-2017 19:55:16 America/Chicago] [328/hug-a-tree/index.php:18] Preview->render()
+[01-Jun-2017 19:55:16 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[01-Jun-2017 19:55:16 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[01-Jun-2017 19:55:16 America/Chicago] [328/hug-a-tree/index.php:26] Base->run()
+[01-Jun-2017 19:56:26 America/Chicago] Unable to open pages/index.html
+[01-Jun-2017 19:56:26 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[01-Jun-2017 19:56:26 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:2934] user_error()
+[01-Jun-2017 19:56:26 America/Chicago] [328/hug-a-tree/index.php:18] Preview->render()
+[01-Jun-2017 19:56:26 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[01-Jun-2017 19:56:26 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[01-Jun-2017 19:56:26 America/Chicago] [328/hug-a-tree/index.php:26] Base->run()
+[01-Jun-2017 19:56:32 America/Chicago] Unable to open pages/index.html
+[01-Jun-2017 19:56:32 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[01-Jun-2017 19:56:32 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:2934] user_error()
+[01-Jun-2017 19:56:32 America/Chicago] [328/hug-a-tree/index.php:18] Preview->render()
+[01-Jun-2017 19:56:32 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[01-Jun-2017 19:56:32 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[01-Jun-2017 19:56:32 America/Chicago] [328/hug-a-tree/index.php:26] Base->run()
