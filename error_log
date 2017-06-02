@@ -23,3 +23,6 @@ Stack trace:
 [31-May-2017 17:46:19 America/Chicago] HTTP 404 (GET /css/index.css)
 [31-May-2017 17:46:19 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [31-May-2017 17:46:19 America/Chicago] [328/hug-a-tree/index.php:27] Base->run()
+[31-May-2017 21:12:53 America/Chicago] HTTP 404 (GET /css/index.css)
+[31-May-2017 21:12:53 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
+[31-May-2017 21:12:53 America/Chicago] [328/hug-a-tree/index.php:27] Base->run()
