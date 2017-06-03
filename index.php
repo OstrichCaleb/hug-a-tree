@@ -22,5 +22,11 @@ $f3->route('GET /', function($f3){
 $f3->route('GET /hiking', function($f3){
 	echo Template::instance()->render('pages/hiking.html');
  });
+
+  //Route to add a location page
+$f3->route('GET /add-location', function($f3){
+	echo Template::instance()->render('pages/add-location.html');
+ });
+
 // run fat-free
 $f3->run();

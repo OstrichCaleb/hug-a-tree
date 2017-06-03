@@ -82,3 +82,9 @@ footer h3{
     width:160px;
 }
 
+div.alert {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: none;
+}
+
