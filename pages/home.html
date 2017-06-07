@@ -9,6 +9,7 @@
 
     <title>Hug A Tree - Home</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" />
     
     <script src="https://use.fontawesome.com/b9f1530c0e.js"></script> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -48,10 +49,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="home-nav">
                     <ul class="nav navbar-nav">
-                        <li id="logo"><img src="./images/hugatree.png" alt=""></li>
-                        <li><a href="#">HIKING</a></li>
-                        <li><a href="#">BIKING</a></li>
-                        <li><a href="#">CHILLING</a></li>
+                        <li id="logo"><a href="./"><img src="./images/hugatree.png" alt=""></a></li>
+                        <li><a href="./hiking">HIKING</a></li>
+                        <li><a href="./biking">BIKING</a></li>
+                        <li><a href="./chilling">CHILLING</a></li>
                         <li><a href="#">JOIN</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">

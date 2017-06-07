@@ -4,3 +4,8 @@
 [02-Jun-2017 11:57:41 America/Chicago] HTTP 404 (GET /index.html)
 [02-Jun-2017 11:57:41 America/Chicago] [328/hug-a-tree/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [02-Jun-2017 11:57:41 America/Chicago] [328/hug-a-tree/index.php:26] Base->run()
+[06-Jun-2017 22:36:45 America/Chicago] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in /home/dnguyen/public_html/328/hug-a-tree/index.php on line 24
+[06-Jun-2017 22:36:51 America/Chicago] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in /home/dnguyen/public_html/328/hug-a-tree/index.php on line 24
+[06-Jun-2017 22:38:04 America/Chicago] PHP Parse error:  syntax error, unexpected '>>' (T_SR) in /home/dnguyen/public_html/328/hug-a-tree/index.php on line 40
+[06-Jun-2017 22:38:06 America/Chicago] PHP Parse error:  syntax error, unexpected '>>' (T_SR) in /home/dnguyen/public_html/328/hug-a-tree/index.php on line 40
+[06-Jun-2017 22:38:07 America/Chicago] PHP Parse error:  syntax error, unexpected '>>' (T_SR) in /home/dnguyen/public_html/328/hug-a-tree/index.php on line 40

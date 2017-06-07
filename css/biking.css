@@ -1,0 +1,50 @@
+.landscape{
+	margin-top:3em;
+	height:80%;
+	background-image: url('http://m5photography.com/5/wp-content/uploads/2012/08/mountainbike-photography-washington-beacon-hill-4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top:1em;
+}
+.landscape .display-text > p{
+	width:45%;
+	font-size:45px;
+	margin:8em auto 2em auto;
+	background-color:#263238;
+	color:white;
+	opacity: 0.8;
+}
+
+.wrapper{
+	margin-top:2em;
+}
+
+.bike-location{
+	background-color:#F3F3F3;
+	padding-top:1em;
+	padding-bottom:1em;
+}
+.bike-location img{
+	height:300px;
+	width:400px;
+}
+.descriptive-icons .fa{
+	color: #CDDC39;
+	padding:2px;
+	font-size:25px;
+	margin-right:0.3em;
+}
+
+
+.hashtags,
+.hashtags > .fa{
+    color:#FF9800;
+    font-size:18px;
+	font-weight: 600;
+	margin-bottom: 0.5em;
+}
