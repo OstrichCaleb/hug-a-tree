@@ -1,26 +1,49 @@
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<div class="navbar-fixed-top">
+        <div class="top-wrapper">
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="">ABOUT</a></li> 
+                <li>
+                    <form class="form-inline">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="site-search"><i class="fa fa-search" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" placeholder="site search" aria-describedby="site-search">
+                    </div>
+                    </form>
+                </li>
+            </ul> 
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li id="logo"><img src="./images/hugatree.png" alt=""></li>
-                <li><a href="#">JOGGING</a></li>
-                <li><a href="#">HIKING</a></li>
-                <li><a href="#">CHILLING</a></li>
-                <li><a href="#">ABOUT</a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+        <nav class="navbar navbar-default bottom-wrapper" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            
+            <div class="col-md-12">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="home-nav">
+                    <ul class="nav navbar-nav">
+                        <li id="logo"><a href="./"><img src="./images/hugatree.png" alt=""></a></li>
+                        <li><a href="./hiking">HIKING</a></li>
+                        <li><a href="./biking">BIKING</a></li>
+                        <li><a href="./chilling">CHILLING</a></li>
+                        <li><a href="#">JOIN</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="#">SIGNUP/ POST NEW/ LOGIN</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
     </div>
-    <!-- /.container -->
-</nav>
+    <div class="landscape">
+        <!-- Navigation -->
+        <div class="display-text">
+            <p class="text-center"></p>
+        </div>
+    </div>

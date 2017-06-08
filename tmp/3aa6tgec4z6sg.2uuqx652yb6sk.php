@@ -18,7 +18,7 @@
 </head>
 <body>
   
-  <include href="includes/nav.inc.html"/>
+  <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
   
   <div class="wrapper">
 		<div class="container">
@@ -28,16 +28,16 @@
         <input type="text" name="warning" id="warning"><label for="warning">Warning</label>
         <input type="text" name="location" id="location"><label for="location">Location</label>
         <label>Options</label>
-        <repeat group="{{ @options }}" value="{{ @option }}">
-          <input type="checkbox" name="{{ @option }}" value="{{ @option }}">{{ @option }}<br>
-        </repeat>
+        <?php foreach (($options?:[]) as $option): ?>
+          <input type="checkbox" name="<?= $option ?>" value="<?= $option ?>"><?= $option ?><br>
+        <?php endforeach; ?>
         <input id="photo" type="file" name="photo" accept="image/*" required/><label for="photo" class="control-label col-sm">Upload Photo</label>'
         <input name="action" type="submit" value="Submit" class="btn">
       </form>
     </div>
   </div>
 	
-	<include href="includes/footer.inc.html"/>
+	<?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
     
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>

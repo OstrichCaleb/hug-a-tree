@@ -5,10 +5,10 @@
         private $_description;
         private $_location;
         private $_warning;
-        private $_options[];
-        private $_pictures[];
+        private $_options;
+        private $_pictures;
         
-        function __construct($title, $description, $location, $warning = "", $options, $pictures)
+        function __construct($title, $description, $location, $warning = "", $pictures, $options = "")
         {
             $this->_title = $title;
             $this->_description = $description;

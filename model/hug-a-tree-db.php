@@ -41,7 +41,36 @@ require '/home/costrander/hug-config.php';
         // Create a new entry
         function addEntry($entry)
         {
+            $insert = 'INSERT INTO entries (title, description, warning, location)
+                                    VALUES (:title, :description, :warning, :location)';
             
+            $statement = $this->_pdo->prepare($insert);
+            $statement->bindValue(':title', $entry->getTitle(), PDO::PARAM_STR);
+            $statement->bindValue(':description', $entry->getDescription(), PDO::PARAM_STR);
+            $statement->bindValue(':warning', $entry->getWarning(), PDO::PARAM_STR);
+            $statement->bindValue(':location', $entry->getLocation(), PDO::PARAM_STR);
+            
+            $statement->execute();
+            
+            //Return ID of inserted row
+            return $this->_pdo->lastInsertId();
+        
+        }
+        
+        // Get all the options
+        function getOptions()
+        {
+            $select = "SELECT * FROM options";
+                            
+            $results = $this->_pdo->query($select);
+             
+            $resultsArray = array();
+             
+            // create an array of blogger objects
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $resultsArray[] = $row['description'];
+            }            
+            return $resultsArray;
         }
         
         // Delete an entry based on that entries id
