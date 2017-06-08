@@ -63,41 +63,37 @@ $f3->route('GET|POST /submit', function($f3)
 			$count = 0;
 			$options = $dbc->getOptions();
 			
-			/*
+			
 			$f3->clear('SESSION');
 			
-			if (!isset($_POST['username']) || $bloggerDB->checkUsername($username)){
-				$f3->set('SESSION.usernameError', 'Username taken');
+			if (!isset($_POST['title'])){
+				$f3->set('SESSION.titleError', 'Please enter a title');
 				$check = true;
 			}
 			
-			if (!isset($_POST['email']) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
-				$f3->set('SESSION.emailError', 'Please enter a valid email address');
+			if (!isset($_POST['description'])){
+				$f3->set('SESSION.descriptionError', 'Please enter a description');
 				$check = true;
 			}
 			
-			if (!isset($_POST['bio'])){
-				$f3->set('SESSION.bioError', 'Please enter a bio');
+			if (!isset($_POST['location'])){
+				$f3->set('SESSION.locationError', 'Please enter a location');
 				$check = true;
 			}
 			
-			if (!isset($_POST['password']) || !validatePass($_POST['password'])){
-				$f3->set('SESSION.passwordError', 'Please enter a password that contains 6 characters, a number, and a special character');
-				$check = true;
+			if (!$check){
+				$activity = new Activity($title, $description, $location, $warning, $photo);
+			
+				$id = $dbc->addEntry($activity);
+				$dbc->addEntryOption($id, $options);
+			} else {
+				$f3->set('SESSION.title', $title);
+				$f3->set('SESSION.description', $description);
+				$f3->set('SESSION.warning', $warning);
+				$f3->set('SESSION.location', $location);
+				
+				$f3->reroute('/add-location');
 			}
-			
-			if (!isset($_POST['verify']) || $pass != $verify){
-				$f3->set('SESSION.verifyError', 'Passwords do not match');
-				$check = true;
-			}
-			*/
-			
-			
-			$activity = new Activity($title, $description, $location, $warning, $photo);
-		
-			$id = $dbc->addEntry($activity);
-			$dbc->addEntryOption($id, $options);
-			
 			unset($_POST);
 		}
 		

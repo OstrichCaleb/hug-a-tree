@@ -23,10 +23,31 @@
   <div class="wrapper">
 		<div class="container">
       <form action="./submit" method="post" enctype="multipart/form-data" id="location-form" class="form-vertical">
-        <input type="text" name="title" id="title"><label for="title" required>Title</label>
-        <textarea rows="4" cols="100%" name="description" id="description" form="location-form"></textarea><label for="description">Description</label>
-        <input type="text" name="warning" id="warning"><label for="warning">Warning</label>
-        <input type="text" name="location" id="location"><label for="location">Location</label>
+        <input type="text" name="title" id="title" value="<?= $SESSION['title'] ?>"><label for="title" required>Title</label>
+          <?php if ($SESSION['titleError'] != NULL): ?>
+            
+              <div class="alert-danger col-sm-8">
+                <strong>Error: </strong><span><?= $SESSION['titleError'] ?></span>
+              </div>
+            
+          <?php endif; ?>
+        <textarea rows="4" cols="100%" name="description" id="description" form="location-form"><?= $SESSION['description'] ?></textarea><label for="description">Description</label>
+          <?php if ($SESSION['descriptionError'] != NULL): ?>
+            
+              <div class="alert-danger col-sm-8">
+                <strong>Error: </strong><span><?= $SESSION['descriptionError'] ?></span>
+              </div>
+            
+          <?php endif; ?>
+        <input type="text" name="warning" id="warning" value="<?= $SESSION['warning'] ?>"><label for="warning">Warning</label>
+        <input type="text" name="location" id="location" value="<?= $SESSION['location'] ?>"><label for="location">Location</label>
+          <?php if ($SESSION['locationError'] != NULL): ?>
+            
+              <div class="alert-danger col-sm-8">
+                <strong>Error: </strong><span><?= $SESSION['locationError'] ?></span>
+              </div>
+            
+          <?php endif; ?>
         <label>Options</label>
         <?php foreach (($options?:[]) as $option): ?>
           <input type="checkbox" name="opt[]" value="<?= $option ?>"><?= $option ?><br>
