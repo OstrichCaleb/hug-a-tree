@@ -61,15 +61,7 @@ $f3->route('GET|POST /submit', function($f3)
 			$location = htmlspecialchars($_POST['location']);
 			
 			$count = 0;
-			$options[] = $dbc->getOptions();
-			
-			/*
-			foreach ($options as $option)
-			{
-				$opt = $_POST[$option];
-				$option = $opt + $count;
-				$count++;
-			}*/
+			$options = $dbc->getOptions();
 			
 			/*
 			$f3->clear('SESSION');
@@ -104,6 +96,7 @@ $f3->route('GET|POST /submit', function($f3)
 			$activity = new Activity($title, $description, $location, $warning, $photo);
 		
 			$id = $dbc->addEntry($activity);
+			$dbc->addEntryOption($id, $options);
 			
 			unset($_POST);
 		}

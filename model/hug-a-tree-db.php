@@ -57,6 +57,36 @@ require '/home/costrander/hug-config.php';
         
         }
         
+        // Create a new entry
+        function addEntryOption($id, $opts)
+        {
+            $insert = 'INSERT INTO entry_options (entry_id, opt_id) VALUES (:entry, :opt)';
+            
+            $statement = $this->_pdo->prepare($insert);
+            $statement->bindValue(':entry', $id, PDO::PARAM_INT);
+            
+            foreach ($opts as $opt)
+            {
+                $optId = $this->getOptionId($opt);
+                $statement->bindValue(':opt', $optId, PDO::PARAM_INT);
+                $statement->execute();
+            }        
+        }
+        
+        // Get option id for adding to entry_options
+        function getOptionId($option)
+        {
+            $select = "SELECT options_id FROM options WHERE description = :option";
+                            
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':option', $option, PDO::PARAM_STR);
+            $statement->execute();
+            
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $row['options_id'];
+        }
+        
         // Get all the options
         function getOptions()
         {

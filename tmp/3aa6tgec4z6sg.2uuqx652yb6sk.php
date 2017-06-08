@@ -29,7 +29,7 @@
         <input type="text" name="location" id="location"><label for="location">Location</label>
         <label>Options</label>
         <?php foreach (($options?:[]) as $option): ?>
-          <input type="checkbox" name="<?= $option ?>" value="<?= $option ?>"><?= $option ?><br>
+          <input type="checkbox" name="opt[]" value="<?= $option ?>"><?= $option ?><br>
         <?php endforeach; ?>
         <input id="photo" type="file" name="photo" accept="image/*" required/><label for="photo" class="control-label col-sm">Upload Photo</label>'
         <input name="action" type="submit" value="Submit" class="btn">
