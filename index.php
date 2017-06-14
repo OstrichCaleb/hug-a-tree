@@ -18,6 +18,12 @@ $f3->set('DEBUG', 3);
 
 //Define a default route
 $f3->route('GET /', function($f3){
+	$dbc = $GLOBALS['dbc'];
+	$array = $dbc->getMostRecent();
+	$f3->set('top1', $array[0]);
+	$f3->set('top2', $array[1]);
+	$f3->set('top3', $array[2]);
+	
 	echo Template::instance()->render('pages/home.html');
 });
 
@@ -30,6 +36,7 @@ $f3->route('GET /hiking', function($f3){
 $f3->route('GET /add-location', function($f3){
 	$dbc = $GLOBALS['dbc'];
 	$f3->set('options', $dbc->getOptions());
+	$f3->set('types', $dbc->getTypes());
 	
 	echo Template::instance()->render('pages/add-location.html');
 });
@@ -60,9 +67,8 @@ $f3->route('GET|POST /submit', function($f3)
 			$warning = htmlspecialchars($_POST['warning']);
 			$location = htmlspecialchars($_POST['location']);
 			
-			$count = 0;
-			$options = $dbc->getOptions();
-			
+			$options = $_POST['opt'];
+			$types = $_POST['types'];
 			
 			$f3->clear('SESSION');
 			
@@ -81,17 +87,25 @@ $f3->route('GET|POST /submit', function($f3)
 				$check = true;
 			}
 			
+			if (!isset($photo)){
+				$f3->set('SESSION.photoError', 'Please enter a photo');
+				$check = true;
+			}
+			
 			if (!$check){
 				$activity = new Activity($title, $description, $location, $warning, $photo);
 			
 				$id = $dbc->addEntry($activity);
-				$dbc->addEntryOption($id, $options);
+				if (isset($_POST['opt']))
+					$dbc->addEntryOption($id, $options);
+				if (isset($_POST['types']))
+					$dbc->addEntryType($id, $types);
 			} else {
 				$f3->set('SESSION.title', $title);
 				$f3->set('SESSION.description', $description);
 				$f3->set('SESSION.warning', $warning);
 				$f3->set('SESSION.location', $location);
-				
+				unset($_POST);
 				$f3->reroute('/add-location');
 			}
 			unset($_POST);

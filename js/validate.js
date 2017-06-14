@@ -23,6 +23,13 @@ function validate(event)
         isError=true;
     }
     
+    // Validate that photo is submitted
+    var photo = $("#photo").val();
+    if (photo == ""){
+        report("photo-error", "Photo must be input");
+        isError=true;
+    }
+    
     // Validate that description is submitted
     var description = $("#description").val();
     if (description == ""){
@@ -54,6 +61,7 @@ function report(id, message)
 function removeErrors()
 {
     $("#title-error").parent().hide();
+    $("#photo-error").parent().hide();
     $("#description-error").parent().hide();
     $("#location-error").parent().hide();
 }

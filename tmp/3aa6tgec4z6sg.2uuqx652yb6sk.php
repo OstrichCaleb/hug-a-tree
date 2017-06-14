@@ -63,7 +63,21 @@
         <?php foreach (($options?:[]) as $option): ?>
           <input type="checkbox" name="opt[]" value="<?= $option ?>"><?= $option ?><br>
         <?php endforeach; ?>
-        <input id="photo" type="file" name="photo" accept="image/*"/><label for="photo" class="control-label col-sm">Upload Photo</label>'
+				<label>Type of Activity</label>
+        <?php foreach (($types?:[]) as $type): ?>
+          <input type="checkbox" name="types[]" value="<?= $type ?>"><?= $type ?><br>
+        <?php endforeach; ?>
+        <input id="photo" type="file" name="photo" accept="image/*"/><label for="photo" class="control-label col-sm">Upload Photo</label>
+				<?php if ($SESSION['photoError'] != NULL): ?>
+					
+						<div class="alert-danger col-sm-8">
+							<strong>Error: </strong><span><?= $SESSION['photoError'] ?></span>
+						</div>
+					
+				<?php endif; ?>
+				<div class="alert alert-danger col-sm-8">
+            <strong>Error: </strong><span id="photo-error"></span>
+        </div>
         <input name="action" type="submit" value="Submit" class="btn">
       </form>
     </div>

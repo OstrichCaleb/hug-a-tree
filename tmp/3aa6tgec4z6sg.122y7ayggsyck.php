@@ -129,7 +129,7 @@
                     <img src="https://static.seattletimes.com/wp-content/uploads/2015/05/9544755a-f377-11e4-9a2c-0474b50dc961-780x520.jpg" class="img-thumbnail img-fluid"/>
                     
                     <div class="card-content">
-                        <h3 class="text-center">Easy Pass Trail</h3>
+                        <h3 class="text-center"><?= $top1->getTitle() ?></h3>
                         <h2><i class="fa fa-hashtag" aria-hidden="true"></i>Hiking trail</h2>
                         <a href="#">Location: somewhere in Washington</a>
                         <p>Posted by: user1 <span class="pull-right">05/31/2017</span></p>

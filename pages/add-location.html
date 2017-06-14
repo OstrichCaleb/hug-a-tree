@@ -63,7 +63,21 @@
         <repeat group="{{ @options }}" value="{{ @option }}">
           <input type="checkbox" name="opt[]" value="{{ @option }}">{{ @option }}<br>
         </repeat>
-        <input id="photo" type="file" name="photo" accept="image/*"/><label for="photo" class="control-label col-sm">Upload Photo</label>'
+				<label>Type of Activity</label>
+        <repeat group="{{ @types }}" value="{{ @type }}">
+          <input type="checkbox" name="types[]" value="{{ @type }}">{{ @type }}<br>
+        </repeat>
+        <input id="photo" type="file" name="photo" accept="image/*"/><label for="photo" class="control-label col-sm">Upload Photo</label>
+				<check if="{{ @SESSION.photoError != NULL }}">
+					<true>
+						<div class="alert-danger col-sm-8">
+							<strong>Error: </strong><span>{{ @SESSION.photoError }}</span>
+						</div>
+					</true>
+				</check>
+				<div class="alert alert-danger col-sm-8">
+            <strong>Error: </strong><span id="photo-error"></span>
+        </div>
         <input name="action" type="submit" value="Submit" class="btn">
       </form>
     </div>
