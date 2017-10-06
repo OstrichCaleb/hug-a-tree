@@ -74,7 +74,7 @@
         <div class="container">
             <div class="col-md-4 box-1">
             <div class="media">
-                <a href="index.html"> 
+                <a href="./hiking"> 
                 <div class="media-left media-middle">
                     <i class="text-left fa fa-map" aria-hidden="true"></i>
                 </div>
@@ -88,7 +88,7 @@
         
         <div class="col-md-4">
             <div class="media">
-                <a href="index.html"> 
+                <a href="./biking"> 
                 <div class="media-left media-middle">
                     <i class="text-left fa fa-bicycle" aria-hidden="true"></i>
                 </div>
@@ -102,7 +102,7 @@
         
         <div class="col-md-4 box-2">
             <div class="media">
-                <a href="index.html"> 
+                <a href="./chilling"> 
                 <div class="media-left media-middle">
                     <i class="text-left fa fa-binoculars" aria-hidden="true"></i>
                 </div>
