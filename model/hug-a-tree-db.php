@@ -258,10 +258,59 @@ require '/home/costrander/hug-config.php';
             
         }
         
-        // Add a new user
+        /**
+         * A method to add a user to the database
+         *
+         *@param The user object that you want to add
+         *@return The id of the new user
+         */
         function addUser($user)
         {
+            $insert = 'INSERT INTO users (username, password)
+                                    VALUES (:username, :password)';
             
+            $statement = $this->_pdo->prepare($insert);
+            $statement->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
+            $statement->bindValue(':password', $user->getPassword(), PDO::PARAM_INT);
+            
+            $statement->execute();
+            
+            //Return ID of inserted row
+            return $this->_pdo->lastInsertId();
+        }
+        
+        function login($user)
+        {
+            $select = 'SELECT user_id, password FROM users WHERE username = :user';
+             
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':user', $user, PDO::PARAM_INT);
+            $statement->execute();
+             
+            $creds = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $creds;
+        }
+        
+        /**
+         * Returns true or false if the username is found in the database
+         *
+         * @access public
+         * @param the username that you want to check for
+         *
+         * @return true or false if the id is found
+         */
+        function checkUsername($username)
+        {
+            $select = 'SELECT * FROM users WHERE username = :username';
+             
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':username', $username, PDO::PARAM_INT);
+            $statement->execute();
+             
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $row;
         }
         
         // Delete a user based on their username

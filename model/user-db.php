@@ -12,10 +12,10 @@ require '/home/costrander/hug-config.php';
      */
     
     /*
-     *A blogger DB class that allows you to create
-     *bloggers, as well as blog posts
+     *A user DB class that allows you to create
+     *users
      */
-    class BloggerDB
+    class UserDB
     {
         private $_pdo;
         
@@ -38,52 +38,26 @@ require '/home/costrander/hug-config.php';
         
          
         /**
-         * A method to add a blogger to the database
+         * A method to add a user to the database
          *
-         *@param The blogger object that you want to add
-         *@return The id of the new blogger
+         *@param The user object that you want to add
+         *@return The id of the new user
          */
-        function addBlogger($blogger)
+        function addUser($user)
         {
-            $insert = 'INSERT INTO bloggers (username, email, password, photo, bio)
-                                    VALUES (:username, :email, :password, :photo, :bio)';
+            $insert = 'INSERT INTO users (username, password)
+                                    VALUES (:username, :password)';
             
             $statement = $this->_pdo->prepare($insert);
-            $statement->bindValue(':username', $blogger->getUsername(), PDO::PARAM_STR);
-            $statement->bindValue(':email', $blogger->getEmail(), PDO::PARAM_STR);
-            $statement->bindValue(':password', $blogger->getPassword(), PDO::PARAM_INT);
-            $statement->bindValue(':photo', $blogger->getPhoto(), PDO::PARAM_STR);
-            $statement->bindValue(':bio', $blogger->getBio(), PDO::PARAM_STR);
+            $statement->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
+            $statement->bindValue(':password', $user->getPassword(), PDO::PARAM_INT);
             
             $statement->execute();
             
             //Return ID of inserted row
             return $this->_pdo->lastInsertId();
         }
-        
-        /**
-         * A method to add a blog post to the database
-         *
-         *@param The blog post object that you want to add
-         *@return The id of the new blog post
-         */
-        function addPost($post)
-        {
-            $insert = 'INSERT INTO posts (post, title, member_id)
-                                    VALUES (:post, :title, :member_id)';
-            
-            $statement = $this->_pdo->prepare($insert);
-            $statement->bindValue(':post', $post->getPost(), PDO::PARAM_STR);
-            $statement->bindValue(':title', $post->getTitle(), PDO::PARAM_STR);
-            $statement->bindValue(':member_id', $post->getMemberId(), PDO::PARAM_STR);
-            
-            $statement->execute();
-            
-            //Return ID of inserted row
-            return $this->_pdo->lastInsertId();
-        }
-         
-        
+
         /**
          * Returns all bloggers in the database collection.
          *
@@ -111,7 +85,7 @@ require '/home/costrander/hug-config.php';
         
         function login($user)
         {
-            $select = 'SELECT blogger_id, password FROM bloggers WHERE username = :user';
+            $select = 'SELECT user_id, password FROM users WHERE username = :user';
              
             $statement = $this->_pdo->prepare($select);
             $statement->bindValue(':user', $user, PDO::PARAM_INT);
@@ -156,7 +130,7 @@ require '/home/costrander/hug-config.php';
          */
         function checkUsername($username)
         {
-            $select = 'SELECT * FROM bloggers WHERE username = :username';
+            $select = 'SELECT * FROM users WHERE username = :username';
              
             $statement = $this->_pdo->prepare($select);
             $statement->bindValue(':username', $username, PDO::PARAM_INT);

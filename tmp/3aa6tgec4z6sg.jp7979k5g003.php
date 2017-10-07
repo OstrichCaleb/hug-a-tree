@@ -85,7 +85,7 @@
           </div>
           <div class="row">
             <div class="col text-center">
-              <input name="action" type="submit" value="Start Blogging!" class="btn">
+              <input name="action" type="submit" value="Create Account!" class="btn">
             </div>
           </div>
         </form>

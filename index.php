@@ -122,35 +122,19 @@ $f3->route('GET|POST /submit', function($f3)
 
 	$f3->route('GET|POST /submit-user', function($f3)
     {
-		$bloggerDB = $GLOBALS['bloggerDB'];
+		$dbc = $GLOBALS['dbc'];
 		
 		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-			if (move_uploaded_file($_FILES["photo"]["tmp_name"], "images/" . basename($_FILES["photo"]["name"]))){
-				$photo = $_FILES["photo"]["name"];
-			}
-			var_dump($_POST);
+			
 			$check = false;
 			$username = htmlspecialchars($_POST['username']);
-			$email = htmlspecialchars($_POST['email']);
-			$bio = htmlspecialchars($_POST['bio']);
 			$password = $_POST['password'];
 			$pass = md5($_POST['password']);
 			$verify = md5($_POST['verify']);
 			
 			$f3->clear('SESSION');
-			var_dump($_POST);
-			if (!isset($_POST['username']) || $bloggerDB->checkUsername($username)){
+			if (!isset($_POST['username']) || $dbc->checkUsername($username)){
 				$f3->set('SESSION.usernameError', 'Username taken');
-				$check = true;
-			}
-			
-			if (!isset($_POST['email']) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
-				$f3->set('SESSION.emailError', 'Please enter a valid email address');
-				$check = true;
-			}
-			
-			if (!isset($_POST['bio'])){
-				$f3->set('SESSION.bioError', 'Please enter a bio');
 				$check = true;
 			}
 			
@@ -165,26 +149,41 @@ $f3->route('GET|POST /submit', function($f3)
 			}
 			
 			if (!$check){
-				$blogger = new Blogger($username, $email, $photo, $bio, -1, 0, $pass, "NA");
+				$user = new User($username, $pass, -1);
 			
-				$id = $bloggerDB->addBlogger($blogger);
+				$id = $dbc->addUser($user);
 				
 				$_SESSION['id'] = $id;
 				$f3->set('SESSION.id', $id);
 				unset($_POST);
 			} else {
 				$f3->set('SESSION.username', $username);
-				$f3->set('SESSION.email', $email);
-				$f3->set('SESSION.bio', $bio);
-				
-				//$f3->reroute('/new-blogger');
+				$f3->reroute('/new-user');
 			}
 			
 			unset($_POST);
 		}
 		
-		//$f3->reroute('/');
+		$f3->reroute('/');
 	});
 
 // run fat-free
 $f3->run();
+
+function validatePass($pass)
+	{
+		$r1='/[A-Z]/';  //Uppercase
+		$r2='/[a-z]/';  //lowercase
+		$r3='/[!@#$%^&*()\-_=+{};:,<.>]/';  // special characters
+		$r4='/[0-9]/';  //numbers
+		
+		if(preg_match($r1, $pass) < 1 && preg_match($r2, $pass) < 1) return false;
+		
+		if(preg_match($r3, $pass) < 1) return false;
+	 
+		if(preg_match($r4, $pass) < 1) return false;
+	 
+		if(strlen($pass) < 6) return false;
+	 
+		return true;
+	 }

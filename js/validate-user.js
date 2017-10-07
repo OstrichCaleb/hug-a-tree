@@ -28,24 +28,10 @@ function validate(event)
       isError =  true;
     }
     
-    // Validate that email is valid
-    var email = $("#email").val();
-    if (!validateEmail(email)){
-        report("email-error", "Email must be valid");
-        isError=true;
-    }
-    
     // Validate that username is submitted
     var username = $("#username").val();
     if (username == "" || username == null){
         report("username-error", "Username must be input");
-        isError=true;
-    }
-    
-    // Validate that bio is submitted
-    var bio = $("#bio").val();
-    if (bio == ""){
-        report("bio-error", "Bio must be input");
         isError=true;
     }
     
@@ -56,20 +42,10 @@ function validate(event)
         isError=true;
     }
     
-    // Clear the password fields
-    $("#password").val('');
-    $("#verify").val('');
-    
     // submit the form if all data is good
     if (!isError){
         $("#user-form").submit();
     }
-}
-
-// function to validate email
-function validateEmail(email) {
-  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
 }
 
 //function to report errrors
@@ -83,8 +59,6 @@ function report(id, message)
 function removeErrors()
 {
     $("#password-error").parent().hide();
-    $("#email-error").parent().hide();
     $("#username-error").parent().hide();
     $("#verify-error").parent().hide();
-    $("#bio-error").parent().hide();
 }
