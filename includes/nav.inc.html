@@ -1,4 +1,4 @@
-<div class="navbar-fixed-top">
+ <div class="navbar-fixed-top">
         <div class="top-wrapper">
             <ul class="nav navbar-nav pull-right">
                 <li><a href="">ABOUT</a></li> 
@@ -34,16 +34,10 @@
                         <li><a href="#">JOIN</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="#">SIGNUP/ POST NEW/ LOGIN</a></li>
+                        <li><a href="./new-user">SIGNUP/ POST NEW/ LOGIN</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
         </nav>
-    </div>
-    <div class="landscape">
-        <!-- Navigation -->
-        <div class="display-text">
-            <p class="text-center"></p>
-        </div>
     </div>
