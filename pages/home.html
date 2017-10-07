@@ -56,7 +56,7 @@
                         <li><a href="#">JOIN</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="#">SIGNUP/ POST NEW/ LOGIN</a></li>
+                        <li><a href="./new-user">SIGNUP/ POST NEW/ LOGIN</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

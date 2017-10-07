@@ -1,6 +1,7 @@
 <?php
 require_once('vendor/autoload.php');
 session_start();
+new Session();
 
 /*
  * Name: Duck Nguyen
@@ -50,6 +51,11 @@ $f3->route('GET /biking', function($f3){
 $f3->route('GET /chilling', function($f3){
 	echo Template::instance()->render('pages/chilling.html');
 });
+
+$f3->route('GET /new-user', function(){
+  echo Template::instance()->render('pages/new-user.html');
+});
+
 
 // Submit a new location
 $f3->route('GET|POST /submit', function($f3)
@@ -112,6 +118,72 @@ $f3->route('GET|POST /submit', function($f3)
 		}
 		
 		$f3->reroute('/');
+	});
+
+	$f3->route('GET|POST /submit-user', function($f3)
+    {
+		$bloggerDB = $GLOBALS['bloggerDB'];
+		
+		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+			if (move_uploaded_file($_FILES["photo"]["tmp_name"], "images/" . basename($_FILES["photo"]["name"]))){
+				$photo = $_FILES["photo"]["name"];
+			}
+			var_dump($_POST);
+			$check = false;
+			$username = htmlspecialchars($_POST['username']);
+			$email = htmlspecialchars($_POST['email']);
+			$bio = htmlspecialchars($_POST['bio']);
+			$password = $_POST['password'];
+			$pass = md5($_POST['password']);
+			$verify = md5($_POST['verify']);
+			
+			$f3->clear('SESSION');
+			var_dump($_POST);
+			if (!isset($_POST['username']) || $bloggerDB->checkUsername($username)){
+				$f3->set('SESSION.usernameError', 'Username taken');
+				$check = true;
+			}
+			
+			if (!isset($_POST['email']) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
+				$f3->set('SESSION.emailError', 'Please enter a valid email address');
+				$check = true;
+			}
+			
+			if (!isset($_POST['bio'])){
+				$f3->set('SESSION.bioError', 'Please enter a bio');
+				$check = true;
+			}
+			
+			if (!isset($_POST['password']) || !validatePass($_POST['password'])){
+				$f3->set('SESSION.passwordError', 'IDK');
+				$check = true;
+			}
+			
+			if (!isset($_POST['verify']) || $pass != $verify){
+				$f3->set('SESSION.verifyError', 'Passwords do not match');
+				$check = true;
+			}
+			
+			if (!$check){
+				$blogger = new Blogger($username, $email, $photo, $bio, -1, 0, $pass, "NA");
+			
+				$id = $bloggerDB->addBlogger($blogger);
+				
+				$_SESSION['id'] = $id;
+				$f3->set('SESSION.id', $id);
+				unset($_POST);
+			} else {
+				$f3->set('SESSION.username', $username);
+				$f3->set('SESSION.email', $email);
+				$f3->set('SESSION.bio', $bio);
+				
+				//$f3->reroute('/new-blogger');
+			}
+			
+			unset($_POST);
+		}
+		
+		//$f3->reroute('/');
 	});
 
 // run fat-free
