@@ -20,7 +20,10 @@
 </head>
 <body>
   
-  <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+  <?php if ($SESSION['id'] == NULL): ?>
+    <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+    <?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
+  <?php endif; ?>
   
   <div class="wrapper">
 		<div class="container">

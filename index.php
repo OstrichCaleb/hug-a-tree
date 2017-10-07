@@ -33,6 +33,33 @@ $f3->route('GET /hiking', function($f3){
 	echo Template::instance()->render('pages/hiking.html');
 });
 
+$f3->route('GET /logout', function($f3){
+	$_SESSION['id'] = NULL;
+	$f3->reroute('/');
+});
+
+$f3->route('GET|POST /login', function($f3){
+	if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+		$user = $_POST['username'];
+		$pass = md5($_POST['password']);
+		
+		$dbc = $GLOBALS['dbc'];
+		
+		$creds = $dbc->login($user);
+		
+		if ($creds['password'] == $pass){
+			$f3->set('SESSION.id', $id);
+			$_SESSION['id'] = $creds['user_id'];
+			unset($_POST);
+		}
+	}
+	
+	if ($_SESSION['id'] != NULL){
+		$f3->reroute('/');
+	}
+	echo Template::instance()->render('pages/login.html');
+});
+
   //Route to add a location page
 $f3->route('GET /add-location', function($f3){
 	$dbc = $GLOBALS['dbc'];

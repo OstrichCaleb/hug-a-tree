@@ -31,10 +31,10 @@
                         <li><a href="./hiking">HIKING</a></li>
                         <li><a href="./biking">BIKING</a></li>
                         <li><a href="./chilling">CHILLING</a></li>
-                        <li><a href="#">JOIN</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="./new-user">SIGNUP/ POST NEW/ LOGIN</a></li>
+                        <li><a href="./new-user">SIGNUP</a></li>
+                        <li><a href="./login">LOGIN</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

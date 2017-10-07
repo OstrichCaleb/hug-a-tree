@@ -33,8 +33,8 @@
                         <li><a href="./chilling">CHILLING</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="./new-user">SIGNUP</a></li>
-                        <li><a href="./login">LOGIN</a></li>
+                        <li><a href="./add-location">POST NEW</a></li>
+                        <li><a href="./logout">LOGOUT</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

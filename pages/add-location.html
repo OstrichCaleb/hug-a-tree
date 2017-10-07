@@ -20,7 +20,10 @@
 </head>
 <body>
   
-  <include href="includes/nav.inc.html"/>
+  <check if="{{ @SESSION.id == NULL }}">
+    <true><include href="includes/nav.inc.html"/></true>
+    <false><include href="includes/user-nav.inc.html"/></false>
+  </check>
   
   <div class="wrapper">
 		<div class="container">

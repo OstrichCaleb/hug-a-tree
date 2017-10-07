@@ -20,7 +20,12 @@
 </head>
 
 <body>
-    <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+    
+    <?php if ($SESSION['id'] == NULL): ?>
+		<?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+		<?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
+	<?php endif; ?>
+    
     <div class="landscape" >
         <!-- Navigation -->
         <div class="display-text">
@@ -164,48 +169,8 @@
     
     
     <!-- ABOUT US ENDS -->
+    <?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
     
-    <!-- FOOTER ENDS -->
-    <footer>
-        <div class="container">
-            <div class="col-md-6 footer-left">
-                <div class="col-md-6">
-                    <h3>OUR GUIDES</h3>
-                    <h4><a href="">Hiking</a></h4>
-                    <h4><a href="">Biking</a></h4>
-                    <h4><a href="">Chilling</a></h4>
-                </div>
-                <div class="col-md-6 creators">
-                    <h3>CREATORS</h3>
-                    <h4>Caleb Ostrander</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                    <h4>Duck Nguyen</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                </div>
-            </div>
-            <div class="col-md-6 footer-right">
-                <div class="col-md-6">
-                    <h3>CONTACT US</h3>
-                    <p>
-                        Hug-a-tree<br>
-                        Kent Station, 417 Ramsay Way<br>
-                        Suite 112, Kent, WA 98032<br>
-                    </p>
-                    <p>(253) 555-5555</p>
-                </div>
-                <div class="col-md-6 text-left">
-                    <img src="./images/hugatree.png">
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- FOOTER ENDS -->
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
