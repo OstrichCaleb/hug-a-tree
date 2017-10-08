@@ -73,6 +73,6 @@
     </div>
   </div>
 </div>
-
+<?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
 </body>
 </html>

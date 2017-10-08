@@ -24,7 +24,7 @@
     <true><include href="includes/nav.inc.html"/></true>
     <false><include href="includes/user-nav.inc.html"/></false>
   </check>
-  
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <div class="wrapper">
 		<div class="container">
       <form action="./submit" method="post" enctype="multipart/form-data" id="location-form" class="form-vertical">
@@ -38,6 +38,17 @@
           </check>
           <div class="alert alert-danger col-sm-8">
             <strong>Error: </strong><span id="title-error"></span>
+          </div>
+				<input type="text" name="subTitle" id="subTitle" value="{{ @SESSION.subTitle }}"><label for="subTitle" required>Sub Title</label>
+          <check if="{{ @SESSION.subTitleError != NULL }}">
+            <true>
+              <div class="alert-danger col-sm-8">
+                <strong>Error: </strong><span>{{ @SESSION.subTitleError }}</span>
+              </div>
+            </true>
+          </check>
+          <div class="alert alert-danger col-sm-8">
+            <strong>Error: </strong><span id="sub-title-error"></span>
           </div>
         <textarea rows="4" cols="100%" name="description" id="description" form="location-form">{{ @SESSION.description }}</textarea><label for="description">Description</label>
           <check if="{{ @SESSION.descriptionError != NULL }}">

@@ -41,11 +41,12 @@ require '/home/costrander/hug-config.php';
         // Create a new entry
         function addEntry($entry)
         {
-            $insert = 'INSERT INTO entries (title, description, warning, location)
-                                    VALUES (:title, :description, :warning, :location)';
+            $insert = 'INSERT INTO entries (main_title, description, warning, location, sub_title)
+                                    VALUES (:main_title, :description, :warning, :location, :sub_title)';
             
             $statement = $this->_pdo->prepare($insert);
-            $statement->bindValue(':title', $entry->getTitle(), PDO::PARAM_STR);
+            $statement->bindValue(':main_title', $entry->getMainTitle(), PDO::PARAM_STR);
+            $statement->bindValue(':sub_title', $entry->getSubTitle(), PDO::PARAM_STR);
             $statement->bindValue(':description', $entry->getDescription(), PDO::PARAM_STR);
             $statement->bindValue(':warning', $entry->getWarning(), PDO::PARAM_STR);
             $statement->bindValue(':location', $entry->getLocation(), PDO::PARAM_STR);
@@ -160,7 +161,7 @@ require '/home/costrander/hug-config.php';
             // create an array of blogger objects
             while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
                 $act = new Activity($row['title'], $row['description'], $row['location'], $row['warning']);
-                $act->setPictures($this->getEntryPhotos($row['entry_id']));
+                $act->setPicture($this->getEntryPhotos($row['entry_id']));
                 $act->setOptions($this->getEntryOptions($row['entry_id']));
                 
                 $resultsArray[] = $act;
@@ -169,19 +170,39 @@ require '/home/costrander/hug-config.php';
             return $resultsArray;
         }
         
+        function getHikeIDs()
+        {
+            $id_query =  "SELECT entry_id FROM entry_types WHERE type_id = 1";
+            
+            $results = $this->_pdo->query($id_query);
+             
+            $idArray = array();
+             
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $id = $row['entry_id'];
+                
+                $idArray[] = $id;
+            }
+            
+            return $idArray;
+        }
+        
         function getHikes()
         {
-            $select =  "SELECT * FROM entries WHERE entry_id = :id";
-            
-            $results = $this->_pdo->query($select);
-             
+            $idArray = $this->getHikeIDs();
             $resultsArray = array();
-             
-            // create an array of blogger objects
-            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-                $act = new Activity($row['title'], $row['description'], $row['location'], $row['warning']);
-                $act->setPictures($this->getEntryPhotos($row['entry_id']));
-                $act->setOptions($this->getEntryOptions($row['entry_id']));
+            
+            foreach ($idArray as $id)
+            {
+                $select =  "SELECT * FROM entries WHERE entry_id = :id";
+                $statement = $this->_pdo->prepare($select);
+                $statement->bindValue(':id', $id, PDO::PARAM_INT);
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                
+                $act = new Activity($result['main_title'], $result['description'], $result['location'], $result['warning'], $result['sub_title']);
+                $act->setPicture($this->getEntryPhotos($result['entry_id']));
+                $act->setOptions($this->getEntryOptions($result['entry_id']));
                 
                 $resultsArray[] = $act;
             }
@@ -197,9 +218,20 @@ require '/home/costrander/hug-config.php';
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             $statement->execute();
             
-            $row = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
             
-            return $row;
+            return $row['link'];
+        }
+        
+        function addEntryPhoto($id, $link)
+        {
+            $insert = 'INSERT INTO pictures (entry_id, link) VALUES (:entry, :link)';
+            
+            $statement = $this->_pdo->prepare($insert);
+            $statement->bindValue(':entry', $id, PDO::PARAM_INT);
+            $statement->bindValue(':link', $link, PDO::PARAM_STR);
+            
+            $statement->execute();
         }
         
         function getEntryOptions($id)

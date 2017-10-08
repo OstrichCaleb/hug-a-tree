@@ -19,7 +19,12 @@
     <link href="./css/hiking.css" rel="stylesheet">
 </head>
 <body>
-    <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+    
+	<?php if ($SESSION['id'] == NULL): ?>
+		<?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+		<?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
+	<?php endif; ?>
+	
     <div class="landscape">
         <!-- Navigation -->
         <div class="display-text">
@@ -55,51 +60,36 @@
 					an appreciation for the sheer power and ruggedness of Mount Rainier.
 				</p>
 			</div>
-		</div>	
+		</div>
+		
+			<?php foreach (($hikes?:[]) as $hike): ?>
+				<div class="row hike-location">
+					<div class="col-md-4">
+						<img class="img-responsive img-thumbnail" id="" src="images/<?= $hike->getPicture() ?>" alt="">
+					</div>
+					<div class="col-md-8">
+						<h3><?= $hike->getMainTitle() ?><br><small><?= $hike->getSubTitle() ?></small></h3>
+						<span class="hashtags"><i class="fa fa-hashtag" aria-hidden="true"></i> Trail</span>
+						<p><i class="fa fa-fw fa-map-signs" aria-hidden="true"></i> 7.0 miles</p>
+						<p><i class="fa fa-fw fa-level-up" aria-hidden="true"></i> 14,409ft.</p>
+						<p class="descriptive-icons">
+							<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+							<i class="fa fa-paw" aria-hidden="true"></i>
+							<i class="fa fa-camera" aria-hidden="true"></i>
+							<i class="fa fa-fire" aria-hidden="true"></i>
+						</p>
+						<p>
+							<?= $hike->getDescription().PHP_EOL ?>
+						</p>
+					</div>
+				</div>
+			<?php endforeach; ?>		
+		
 		</div>
 	</div>
 	
-	
-    <footer>
-        <div class="container">
-            <div class="col-md-6 footer-left">
-                <div class="col-md-6">
-                    <h3>OUR GUIDES</h3>
-                    <h4><a href="">Hiking</a></h4>
-                    <h4><a href="">Biking</a></h4>
-                    <h4><a href="">Chilling</a></h4>
-                </div>
-                <div class="col-md-6 creators">
-                    <h3>CREATORS</h3>
-                    <h4>Caleb Ostrander</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                    <h4>Duck Nguyen</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                </div>
-            </div>
-            <div class="col-md-6 footer-right">
-                <div class="col-md-6">
-                    <h3>CONTACT US</h3>
-                    <p>
-                        Hug-a-tree<br>
-                        Kent Station, 417 Ramsay Way<br>
-                        Suite 112, Kent, WA 98032<br>
-                    </p>
-                    <p>(253) 555-5555</p>
-                </div>
-                <div class="col-md-6 text-left">
-                        <img src="./images/hugatree.png">
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- FOOTER END -->
+	<?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
+    
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 

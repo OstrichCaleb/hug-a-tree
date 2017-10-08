@@ -30,6 +30,10 @@ $f3->route('GET /', function($f3){
 
 //Route to hiking page
 $f3->route('GET /hiking', function($f3){
+	$dbc = $GLOBALS['dbc'];
+	
+	$f3->set('hikes', $dbc->getHikes());
+	
 	echo Template::instance()->render('pages/hiking.html');
 });
 
@@ -96,6 +100,7 @@ $f3->route('GET|POST /submit', function($f3)
 			
 			$check = false;
 			$title = htmlspecialchars($_POST['title']);
+			$subTitle = htmlspecialchars($_POST['subTitle']);
 			$description = htmlspecialchars($_POST['description']);
 			$warning = htmlspecialchars($_POST['warning']);
 			$location = htmlspecialchars($_POST['location']);
@@ -107,6 +112,11 @@ $f3->route('GET|POST /submit', function($f3)
 			
 			if (!isset($_POST['title'])){
 				$f3->set('SESSION.titleError', 'Please enter a title');
+				$check = true;
+			}
+			
+			if (!isset($_POST['subTitle'])){
+				$f3->set('SESSION.subTitleError', 'Please enter a sub title');
 				$check = true;
 			}
 			
@@ -126,15 +136,17 @@ $f3->route('GET|POST /submit', function($f3)
 			}
 			
 			if (!$check){
-				$activity = new Activity($title, $description, $location, $warning, $photo);
+				$activity = new Activity($title, $description, $location, $warning, $subTitle, $photo);
 			
 				$id = $dbc->addEntry($activity);
 				if (isset($_POST['opt']))
 					$dbc->addEntryOption($id, $options);
 				if (isset($_POST['types']))
 					$dbc->addEntryType($id, $types);
+				$dbc->addEntryPhoto($id, $photo);
 			} else {
 				$f3->set('SESSION.title', $title);
+				$f3->set('SESSION.subTitle', $subTitle);
 				$f3->set('SESSION.description', $description);
 				$f3->set('SESSION.warning', $warning);
 				$f3->set('SESSION.location', $location);

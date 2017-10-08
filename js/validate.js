@@ -23,6 +23,13 @@ function validate(event)
         isError=true;
     }
     
+    // Validate that sub title is submitted
+    var title = $("#subTitle").val();
+    if (title == ""){
+        report("sub-title-error", "Sub title must be input");
+        isError=true;
+    }
+    
     // Validate that photo is submitted
     var photo = $("#photo").val();
     if (photo == ""){
@@ -61,6 +68,7 @@ function report(id, message)
 function removeErrors()
 {
     $("#title-error").parent().hide();
+    $("#sub-title-error").parent().hide();
     $("#photo-error").parent().hide();
     $("#description-error").parent().hide();
     $("#location-error").parent().hide();

@@ -24,7 +24,7 @@
     <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
     <?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
   <?php endif; ?>
-  
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <div class="wrapper">
 		<div class="container">
       <form action="./submit" method="post" enctype="multipart/form-data" id="location-form" class="form-vertical">
@@ -38,6 +38,17 @@
           <?php endif; ?>
           <div class="alert alert-danger col-sm-8">
             <strong>Error: </strong><span id="title-error"></span>
+          </div>
+				<input type="text" name="subTitle" id="subTitle" value="<?= $SESSION['subTitle'] ?>"><label for="subTitle" required>Sub Title</label>
+          <?php if ($SESSION['subTitleError'] != NULL): ?>
+            
+              <div class="alert-danger col-sm-8">
+                <strong>Error: </strong><span><?= $SESSION['subTitleError'] ?></span>
+              </div>
+            
+          <?php endif; ?>
+          <div class="alert alert-danger col-sm-8">
+            <strong>Error: </strong><span id="sub-title-error"></span>
           </div>
         <textarea rows="4" cols="100%" name="description" id="description" form="location-form"><?= $SESSION['description'] ?></textarea><label for="description">Description</label>
           <?php if ($SESSION['descriptionError'] != NULL): ?>

@@ -20,49 +20,11 @@
     <link href="./css/biking.css" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar-fixed-top">
-        <div class="top-wrapper">
-            <ul class="nav navbar-nav pull-right">
-                <li><a href="">ABOUT</a></li> 
-                <li>
-                    <form class="form-inline">
-                    <div class="input-group">
-                        <span class="input-group-addon" id="site-search"><i class="fa fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="site search" aria-describedby="site-search">
-                    </div>
-                    </form>
-                </li>
-            </ul> 
-        </div>
-        <nav class="navbar navbar-default bottom-wrapper" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home-nav">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            
-            <div class="col-md-12">
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="home-nav">
-                    <ul class="nav navbar-nav">
-                        <li id="logo"><a href="./"><img src="./images/hugatree.png" alt=""></a></li>
-                        <li><a href="./hiking">HIKING</a></li>
-                        <li><a href="./biking">BIKING</a></li>
-                        <li><a href="./chilling">CHILLING</a></li>
-                        <li><a href="#">JOIN</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav pull-right">
-                        <li><a href="#">SIGNUP/ POST NEW/ LOGIN</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </nav>
-    </div>
+    <?php if ($SESSION['id'] == NULL): ?>
+		<?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+		<?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
+	<?php endif; ?>
+	
     <div class="landscape">
         <!-- Navigation -->
         <div class="display-text">
@@ -102,47 +64,7 @@
 		</div>
 	</div>
 	
-	<!-- FOOTER START -->
-    <footer>
-        <div class="container">
-            <div class="col-md-6 footer-left">
-                <div class="col-md-6">
-                    <h3>OUR GUIDES</h3>
-                    <h4><a href="">Hiking</a></h4>
-                    <h4><a href="">Biking</a></h4>
-                    <h4><a href="">Chilling</a></h4>
-                </div>
-                <div class="col-md-6 creators">
-                    <h3>CREATORS</h3>
-                    <h4>Caleb Ostrander</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                    <h4>Duck Nguyen</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                </div>
-            </div>
-            <div class="col-md-6 footer-right">
-                <div class="col-md-6">
-                    <h3>CONTACT US</h3>
-                    <p>
-                        Hug-a-tree<br>
-                        Kent Station, 417 Ramsay Way<br>
-                        Suite 112, Kent, WA 98032<br>
-                    </p>
-                    <p>(253) 555-5555</p>
-                </div>
-                <div class="col-md-6 text-left">
-                        <img src="./images/hugatree.png">
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- FOOTER END -->
+	<?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
     
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
