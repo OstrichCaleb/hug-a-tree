@@ -160,7 +160,7 @@ require '/home/costrander/hug-config.php';
              
             // create an array of blogger objects
             while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-                $act = new Activity($row['title'], $row['description'], $row['location'], $row['warning']);
+                $act = new Activity($row['main_title'], $row['description'], $row['location'], $row['warning'], $row['sub_title']);
                 $act->setPicture($this->getEntryPhotos($row['entry_id']));
                 $act->setOptions($this->getEntryOptions($row['entry_id']));
                 
@@ -313,7 +313,7 @@ require '/home/costrander/hug-config.php';
         
         function login($user)
         {
-            $select = 'SELECT user_id, password FROM users WHERE username = :user';
+            $select = 'SELECT user_id, password, type FROM users WHERE username = :user';
              
             $statement = $this->_pdo->prepare($select);
             $statement->bindValue(':user', $user, PDO::PARAM_INT);
@@ -355,5 +355,40 @@ require '/home/costrander/hug-config.php';
         function changePassword($username, $password)
         {
             
+        }
+        
+        function allUsers()
+        {
+            $select = "SELECT * FROM users";
+                            
+            $results = $this->_pdo->query($select);
+             
+            $resultsArray = array();
+             
+            // create an array of user objects
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                if ($row['type'] == 1) {
+                    $temp = new Admin($row['username'], "pass", $row['user_id']);
+                } else {
+                    $temp = new User($row['username'], "pass", $row['user_id']);
+                }
+                $resultsArray[] = $temp;
+            }
+            
+            return $resultsArray;
+        }
+        
+        function updateUser($id, $type)
+        {
+            if ($type == 0){
+                $insert = 'UPDATE users SET type = 1 WHERE user_id = :id';
+            } else {
+                $insert = 'UPDATE users SET type = 0 WHERE user_id = :id';
+            }
+            
+            $statement = $this->_pdo->prepare($insert);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            
+            $statement->execute();
         }
     }

@@ -39,6 +39,7 @@ $f3->route('GET /hiking', function($f3){
 
 $f3->route('GET /logout', function($f3){
 	$_SESSION['id'] = NULL;
+	$_SESSION['admin'] = NULL;
 	$f3->reroute('/');
 });
 
@@ -52,6 +53,13 @@ $f3->route('GET|POST /login', function($f3){
 		$creds = $dbc->login($user);
 		
 		if ($creds['password'] == $pass){
+			if ($creds['type'] == 1){
+				$f3->set('SESSION.admin', $creds['user_id']);
+				$_SESSION['admin'] = $creds['type'];
+			}
+			elseif ($creds['type'] == 2){
+				
+			}
 			$f3->set('SESSION.id', $id);
 			$_SESSION['id'] = $creds['user_id'];
 			unset($_POST);
@@ -62,6 +70,31 @@ $f3->route('GET|POST /login', function($f3){
 		$f3->reroute('/');
 	}
 	echo Template::instance()->render('pages/login.html');
+});
+
+$f3->route('GET /admin', function($f3){
+	if ($_SESSION['admin'] == NULL){
+		$f3->reroute('/');
+	}
+	
+	$dbc = $GLOBALS['dbc'];
+	$f3->set('users', $dbc->allUsers());
+	
+	echo Template::instance()->render('pages/admin.html');
+});
+
+$f3->route('POST /change-users', function($f3){
+	if ($_SESSION['admin'] == NULL){
+		$f3->reroute('/');
+	}
+	$dbc = $GLOBALS['dbc'];
+	foreach ($_POST['change'] as $id){
+//Change this to make it do user to admin and admin to user
+		$dbc->updateUser($id, 0);
+	}
+	$f3->set('users', $dbc->allUsers());
+	
+	echo Template::instance()->render('pages/admin.html');
 });
 
   //Route to add a location page

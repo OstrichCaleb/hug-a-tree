@@ -1,20 +1,21 @@
 <?php
     class Admin extends User
     {
-        function __construct($username, $password)
+        protected $type;
+        
+        function __construct($username, $password, $id, $type = 1)
         {
-            parent::__construct($username, $password);
+            parent::__construct($username, $password, $id);
+            $this->type = $type;
         }
         
-        // Delete a specific user from the database
-        function deleteUser($username)
+        public function getType()
         {
-            
+          return $this->type;
         }
-        
-        // Change a users password
-        function changeUserPassword($username, $password)
+      
+        public function setType($type)
         {
-            
-        }
+          $this->type = $type;
+        }        
     }

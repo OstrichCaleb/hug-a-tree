@@ -1,0 +1,22 @@
+<form role="form" method="post" action="./change-users">
+  <table>
+    <tr>
+      <td>Username</td>
+      <td>ID</td>
+      <td>Type</td>
+      <td>Make Admin</td>
+    </tr>
+    <repeat group="{{ @users }}" value="{{ @user }}">
+      <tr>
+        <td>{{ @user->getUsername() }}</td>
+        <td>{{ @user->getId() }}</td>
+        <check if="{{ @user->getType() }} == 0">
+          <true><td>User</td></true>
+          <false><td>Admin</td></false>
+        </check>
+        <td><input type="checkbox" name="change[{{ @user->getId() }}]" value="{{ @user->getId() }}"></td>
+      </tr>
+    </repeat>
+  </table>
+  <br><input id="change-button" name="change-button" type="submit" value="Make Admin">
+</form>

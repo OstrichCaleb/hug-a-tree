@@ -32,12 +32,6 @@
     <?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
   <?php endif; ?>
   
-<div class="landscape" >
-    <!-- Navigation -->
-    <div class="display-text">
-        <p class="text-center">Create An Account</p>
-    </div>
-</div>
 <div class="col-md-12 page-content">
   <div class="container">
     <div class="container-fluid">
@@ -119,5 +113,6 @@
     </div>
   </div>
 </div>
+<?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
 </body>
 </html>

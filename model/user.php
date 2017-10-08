@@ -52,6 +52,11 @@
             return $this->id;
         }
         
+        function getType()
+        {
+            return 0;
+        }
+        
         // Create a new user by passing the object
         function addUser($user)
         {
