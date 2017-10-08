@@ -1,4 +1,9 @@
 <form role="form" method="post" action="./change-users">
+  
+  <check if="isset({{ @warning }})">
+    <true><h1>{{ @warning }}</h1></true>
+  </check>
+
   <table>
     <tr>
       <td>Username</td>

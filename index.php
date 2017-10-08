@@ -84,22 +84,28 @@ $f3->route('GET /admin', function($f3){
 });
 
 $f3->route('POST /change-users', function($f3){
-	if ($_SESSION['admin'] == NULL){
+	if ($_SESSION['admin'] == NULL) {
 		$f3->reroute('/');
 	}
 	$dbc = $GLOBALS['dbc'];
 	
 	if (isset($_POST['admin'])) {
-		foreach ($_POST['change'] as $id){
-		$dbc->updateUser($id, 0);
+		foreach ($_POST['change'] as $id) {
+			$dbc->updateUser($id, 0);
 		}
 	} elseif (isset($_POST['user'])) {
-		foreach ($_POST['change'] as $id){
-		$dbc->updateUser($id, 1);
+		foreach ($_POST['change'] as $id) {
+			$dbc->updateUser($id, 1);
 		}
 	} else {
-		foreach ($_POST['change'] as $id){
-		$dbc->delUser($id);
+		if ($_SESSION['delete'] == NULL) {
+			$_SESSION['delete'] = "1";
+			$f3->set('warning', "Are you sure you want to delete?");
+		} else {
+			foreach ($_POST['change'] as $id){
+				$dbc->delUser($id);
+			}
+			$_SESSION['delete'] = NULL;
 		}
 	}
 	

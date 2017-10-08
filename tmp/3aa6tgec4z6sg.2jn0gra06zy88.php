@@ -1,4 +1,9 @@
 <form role="form" method="post" action="./change-users">
+  
+  <?php if (isset( $warning )): ?>
+    <h1><?= ($warning) ?></h1>
+  <?php endif; ?>
+
   <table>
     <tr>
       <td>Username</td>
