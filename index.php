@@ -88,10 +88,21 @@ $f3->route('POST /change-users', function($f3){
 		$f3->reroute('/');
 	}
 	$dbc = $GLOBALS['dbc'];
-	foreach ($_POST['change'] as $id){
-//Change this to make it do user to admin and admin to user
+	
+	if (isset($_POST['admin'])) {
+		foreach ($_POST['change'] as $id){
 		$dbc->updateUser($id, 0);
+		}
+	} elseif (isset($_POST['user'])) {
+		foreach ($_POST['change'] as $id){
+		$dbc->updateUser($id, 1);
+		}
+	} else {
+		foreach ($_POST['change'] as $id){
+		$dbc->delUser($id);
+		}
 	}
+	
 	$f3->set('users', $dbc->allUsers());
 	
 	echo Template::instance()->render('pages/admin.html');

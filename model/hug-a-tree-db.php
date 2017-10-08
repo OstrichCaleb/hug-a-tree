@@ -391,4 +391,13 @@ require '/home/costrander/hug-config.php';
             
             $statement->execute();
         }
+        
+        function delUser($id)
+        {
+            $select = "DELETE FROM users WHERE user_id = :id";
+             
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+        }
     }
