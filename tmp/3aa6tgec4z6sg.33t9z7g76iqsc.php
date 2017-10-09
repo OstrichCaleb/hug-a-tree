@@ -34,41 +34,13 @@
 	
 	<div class="wrapper">
 		<div class="container">
-			
-		<div class="row hike-location">
-			<div class="col-md-4">
-				<a href="#" target="_blank">
-					<img class="img-responsive img-thumbnail" id="" src="http://exotichikes.com/wp-content/uploads/2014/11/IMG_0021.jpg" alt="">
-				</a>
-			</div>
-			<div class="col-md-8">
-				<h3>Tahoma Creek Suspension Bridge from Mount Rainier National Park<br><small>Mount Rainer National Park - Washington Coast</small></h3>
-				<span class="hashtags"><i class="fa fa-hashtag" aria-hidden="true"></i> Trail</span>
-				<p><i class="fa fa-fw fa-map-signs" aria-hidden="true"></i> 7.0 miles</p>
-				<p><i class="fa fa-fw fa-level-up" aria-hidden="true"></i> 14,409ft.</p>
-				<p class="descriptive-icons">
-					<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-					<i class="fa fa-paw" aria-hidden="true"></i>
-					<i class="fa fa-camera" aria-hidden="true"></i>
-					<i class="fa fa-fire" aria-hidden="true"></i>
-				</p>
-				<p>
-					Located on the Wonderland Trail, a 95 mile path that encircles Mount Rainier, Tahoma Creek is one of
-					the forgotten streams in the National Park. While millions drive over it each year, quickly passing
-					through Longmire and Paradise, few take the trek upstream toward one of the more awesome hiking
-					destinations around the state. At 6.4 miles round trip, taking a hike along Tahoma Creek, one gets
-					an appreciation for the sheer power and ruggedness of Mount Rainier.
-				</p>
-			</div>
-		</div>
-		
 			<?php foreach (($hikes?:[]) as $hike): ?>
 				<div class="row hike-location">
 					<div class="col-md-4">
-						<img class="img-responsive img-thumbnail" id="" src="images/<?= $hike->getPicture() ?>" alt="">
+						<img class="img-responsive img-thumbnail" id="" src="images/<?= ($hike->getPicture()) ?>" alt="">
 					</div>
 					<div class="col-md-8">
-						<h3><?= $hike->getMainTitle() ?><br><small><?= $hike->getSubTitle() ?></small></h3>
+						<h3><?= ($hike->getMainTitle()) ?><br><small><?= ($hike->getSubTitle()) ?></small></h3>
 						<span class="hashtags"><i class="fa fa-hashtag" aria-hidden="true"></i> Trail</span>
 						<p><i class="fa fa-fw fa-map-signs" aria-hidden="true"></i> 7.0 miles</p>
 						<p><i class="fa fa-fw fa-level-up" aria-hidden="true"></i> 14,409ft.</p>
@@ -79,12 +51,12 @@
 							<i class="fa fa-fire" aria-hidden="true"></i>
 						</p>
 						<p>
-							<?= $hike->getDescription().PHP_EOL ?>
+							<?= ($hike->getDescription())."
+" ?>
 						</p>
 					</div>
 				</div>
 			<?php endforeach; ?>		
-		
 		</div>
 	</div>
 	

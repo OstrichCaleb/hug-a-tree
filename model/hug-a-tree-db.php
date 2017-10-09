@@ -160,7 +160,7 @@ require '/home/costrander/hug-config.php';
              
             // create an array of blogger objects
             while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-                $act = new Activity($row['main_title'], $row['description'], $row['location'], $row['warning'], $row['sub_title']);
+                $act = new Activity($row['main_title'], $row['description'], $row['location'], $row['warning'], $row['sub_title'], "", "");
                 $act->setPicture($this->getEntryPhotos($row['entry_id']));
                 $act->setOptions($this->getEntryOptions($row['entry_id']));
                 
@@ -170,37 +170,46 @@ require '/home/costrander/hug-config.php';
             return $resultsArray;
         }
         
-        function getHikeIDs()
+        function getHikeIDs($type)
         {
-            $id_query =  "SELECT entry_id FROM entry_types WHERE type_id = 1";
+            $select =  "SELECT entry_id FROM entry_types WHERE type_id = :id";
             
-            $results = $this->_pdo->query($id_query);
-             
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':id', $type, PDO::PARAM_INT);
+            $statement->execute();
+            
             $idArray = array();
-             
-            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-                $id = $row['entry_id'];
-                
-                $idArray[] = $id;
+            
+            $row = $statement->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($row as $i) {
+                $idArray[] = $i['entry_id'];
             }
             
+            //MAKING THIS WORK FOR NOT JUST HIKING
             return $idArray;
         }
         
-        function getHikes()
+        function getHikes($type)
         {
-            $idArray = $this->getHikeIDs();
+            $idArray = $this->getHikeIDs($type);
             $resultsArray = array();
             
             foreach ($idArray as $id)
             {
+                if ($id == 1) {
+                    $type = "Hiking trail";
+                } elseif ($id == 2) {
+                    $type = "Biking route";
+                } else {
+                    $type = "Chilling spot";
+                }
                 $select =  "SELECT * FROM entries WHERE entry_id = :id";
                 $statement = $this->_pdo->prepare($select);
                 $statement->bindValue(':id', $id, PDO::PARAM_INT);
                 $statement->execute();
                 $result = $statement->fetch(PDO::FETCH_ASSOC);
                 
-                $act = new Activity($result['main_title'], $result['description'], $result['location'], $result['warning'], $result['sub_title']);
+                $act = new Activity($result['main_title'], $result['description'], $result['location'], $result['warning'], $result['sub_title'], "", "", $type);
                 $act->setPicture($this->getEntryPhotos($result['entry_id']));
                 $act->setOptions($this->getEntryOptions($result['entry_id']));
                 

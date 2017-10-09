@@ -8,8 +8,9 @@
         protected $options = array();
         protected $picture;
         protected $sub_title;
+        protected $type;
         
-        function __construct($main_title, $description, $location, $warning = "", $sub_title="", $picture = "", $options = "")
+        function __construct($main_title, $description, $location, $warning = "", $sub_title="", $picture = "", $options = "", $type = "NA")
         {
             $this->main_title = $main_title;
             $this->description = $description;
@@ -18,6 +19,7 @@
             $this->options = $options;
             $this->picture = $picture;
             $this->sub_title = $sub_title;
+            $this->type = $type;
         }
         
         public function getMainTitle()
@@ -88,6 +90,16 @@
         public function setPicture($picture)
         {
           $this->picture = $picture;
+        }
+        
+        public function getType()
+        {
+          return $this->type;
+        }
+      
+        public function setType($type)
+        {
+          $this->type = $type;
         }
     }
     

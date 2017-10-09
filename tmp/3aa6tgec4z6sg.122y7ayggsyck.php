@@ -92,10 +92,9 @@
                     <img src="https://static.seattletimes.com/wp-content/uploads/2015/05/9544755a-f377-11e4-9a2c-0474b50dc961-780x520.jpg" class="img-thumbnail img-fluid"/>
                     
                     <div class="card-content">
-                        <h3 class="text-center"><?= $top1->getMainTitle() ?></h3>
-                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i>Hiking trail</h2>
-                        <a href="#">Location: somewhere in Washington</a>
-                        <p>Posted by: user1 <span class="pull-right">05/31/2017</span></p>
+                        <h3 class="text-center"><?= ($top1->getMainTitle()) ?></h3>
+                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i><?= ($top1->getType()) ?></h2>
+                        <a href="#">Location: <?= ($top1->getLocation()) ?></a>
                     </div>
                 </div>
             </div>
@@ -107,10 +106,9 @@
                     <img src="https://cdn-files.apstatic.com/mtb/7005794_medium_1444246717.jpg" class="img-thumbnail img-fluid"/>
                     
                     <div class="card-content">
-                        <h3 class="text-center">Tiger Mountain Loop</h3>
-                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i>Biking route</h2>
-                        <a href="#">Location: somewhere else in Washington</a>
-                        <p>Posted by: user2 <span class="pull-right">05/29/2017</span></p>
+                        <h3 class="text-center"><?= ($top2->getMainTitle()) ?></h3>
+                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i><?= ($top2->getType()) ?></h2>
+                        <a href="#">Location: <?= ($top2->getLocation()) ?></a>
                     </div>
                 </div>
             </div>
@@ -123,10 +121,9 @@
                     <img src="http://www.planetware.com/photos-large/USWA/us-washington-state-port-angeles.jpg" class="img-thumbnail img-fluid"/>
                     
                     <div class="card-content">
-                        <h3 class="text-center">Hurricane Ridge</h3>
-                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i>Chilling spot</h2>
-                        <a href="#">Location: somewhere else in Washington</a>
-                        <p>Posted by: user3 <span class="pull-right">05/30/2017</span></p>
+                        <h3 class="text-center"><?= ($top3->getMainTitle()) ?></h3>
+                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i><?= ($top3->getType()) ?></h2>
+                        <a href="#">Location: <?= ($top3->getLocation()) ?></a>
                     </div>
                 </div>
             </div>

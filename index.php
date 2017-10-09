@@ -32,7 +32,7 @@ $f3->route('GET /', function($f3){
 $f3->route('GET /hiking', function($f3){
 	$dbc = $GLOBALS['dbc'];
 	
-	$f3->set('hikes', $dbc->getHikes());
+	$f3->set('hikes', $dbc->getHikes(1));
 	
 	echo Template::instance()->render('pages/hiking.html');
 });
@@ -40,6 +40,8 @@ $f3->route('GET /hiking', function($f3){
 $f3->route('GET /logout', function($f3){
 	$_SESSION['id'] = NULL;
 	$_SESSION['admin'] = NULL;
+	$f3->clear('SESSION.id');
+	$f3->clear('SESSION.admin');
 	$f3->reroute('/');
 });
 
@@ -116,6 +118,9 @@ $f3->route('POST /change-users', function($f3){
 
   //Route to add a location page
 $f3->route('GET /add-location', function($f3){
+	if ($_SESSION['id'] == NULL){
+		$f3->reroute('/');
+	}
 	$dbc = $GLOBALS['dbc'];
 	$f3->set('options', $dbc->getOptions());
 	$f3->set('types', $dbc->getTypes());
@@ -125,11 +130,20 @@ $f3->route('GET /add-location', function($f3){
 
 //Route to biking page
 $f3->route('GET /biking', function($f3){
+	$dbc = $GLOBALS['dbc'];
+	
+	$f3->set('bikes', $dbc->getHikes(2));
+	
 	echo Template::instance()->render('pages/biking.html');
 });
 
 //Route to chilling page
 $f3->route('GET /chilling', function($f3){
+	$dbc = $GLOBALS['dbc'];
+	
+	$f3->set('chills', $dbc->getHikes(3));
+	$test = $dbc->getHikes(3);
+	
 	echo Template::instance()->render('pages/chilling.html');
 });
 
@@ -139,8 +153,7 @@ $f3->route('GET /new-user', function(){
 
 
 // Submit a new location
-$f3->route('GET|POST /submit', function($f3)
-    {
+$f3->route('GET|POST /submit', function($f3) {
 		$dbc = $GLOBALS['dbc'];
 		
 		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -158,7 +171,9 @@ $f3->route('GET|POST /submit', function($f3)
 			$options = $_POST['opt'];
 			$types = $_POST['types'];
 			
+			$id = $f3->get('SESSION.id');
 			$f3->clear('SESSION');
+			$f3->set('SESSION.id', $id);
 			
 			if (!isset($_POST['title'])){
 				$f3->set('SESSION.titleError', 'Please enter a title');
@@ -221,7 +236,10 @@ $f3->route('GET|POST /submit', function($f3)
 			$pass = md5($_POST['password']);
 			$verify = md5($_POST['verify']);
 			
+			$id = $f3->get('SESSION.id');
 			$f3->clear('SESSION');
+			$f3->set('SESSION.id', $id);
+			
 			if (!isset($_POST['username']) || $dbc->checkUsername($username)){
 				$f3->set('SESSION.usernameError', 'Username taken');
 				$check = true;
