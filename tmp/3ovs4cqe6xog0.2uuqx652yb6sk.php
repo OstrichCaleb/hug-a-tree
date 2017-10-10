@@ -16,7 +16,7 @@
     
     <!-- Custom CSS -->
     <link href="./css/layout.css" rel="stylesheet">
-    <link href="./css/hiking.css" rel="stylesheet">
+    <link href="./css/add-location.css" rel="stylesheet">
 </head>
 <body>
   
@@ -24,75 +24,141 @@
     <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
     <?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
   <?php endif; ?>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <div class="wrapper">
-		<div class="container">
-      <form action="./submit" method="post" enctype="multipart/form-data" id="location-form" class="form-vertical">
-        <input type="text" name="title" id="title" value="<?= $SESSION['title'] ?>"><label for="title" required>Title</label>
-          <?php if ($SESSION['titleError'] != NULL): ?>
-            
-              <div class="alert-danger col-sm-8">
-                <strong>Error: </strong><span><?= $SESSION['titleError'] ?></span>
-              </div>
-            
-          <?php endif; ?>
-          <div class="alert alert-danger col-sm-8">
-            <strong>Error: </strong><span id="title-error"></span>
-          </div>
-				<input type="text" name="subTitle" id="subTitle" value="<?= $SESSION['subTitle'] ?>"><label for="subTitle" required>Sub Title</label>
-          <?php if ($SESSION['subTitleError'] != NULL): ?>
-            
-              <div class="alert-danger col-sm-8">
-                <strong>Error: </strong><span><?= $SESSION['subTitleError'] ?></span>
-              </div>
-            
-          <?php endif; ?>
-          <div class="alert alert-danger col-sm-8">
-            <strong>Error: </strong><span id="sub-title-error"></span>
-          </div>
-        <textarea rows="4" cols="100%" name="description" id="description" form="location-form"><?= $SESSION['description'] ?></textarea><label for="description">Description</label>
-          <?php if ($SESSION['descriptionError'] != NULL): ?>
-            
-              <div class="alert-danger col-sm-8">
-                <strong>Error: </strong><span><?= $SESSION['descriptionError'] ?></span>
-              </div>
-            
-          <?php endif; ?>
-          <div class="alert alert-danger col-sm-8">
-            <strong>Error: </strong><span id="description-error"></span>
-          </div>
-        <input type="text" name="warning" id="warning" value="<?= $SESSION['warning'] ?>"><label for="warning">Warning</label>
-        <input type="text" name="location" id="location" value="<?= $SESSION['location'] ?>"><label for="location">Location</label>
-          <?php if ($SESSION['locationError'] != NULL): ?>
-            
-              <div class="alert-danger col-sm-8">
-                <strong>Error: </strong><span><?= $SESSION['locationError'] ?></span>
-              </div>
-            
-          <?php endif; ?>
-          <div class="alert alert-danger col-sm-8">
-            <strong>Error: </strong><span id="location-error"></span>
-          </div>
-        <label>Options</label>
-        <?php foreach (($options?:[]) as $option): ?>
-          <input type="checkbox" name="opt[]" value="<?= $option ?>"><?= $option ?><br>
-        <?php endforeach; ?>
-				<label>Type of Activity</label>
-        <?php foreach (($types?:[]) as $type): ?>
-          <input type="checkbox" name="types[]" value="<?= $type ?>"><?= $type ?><br>
-        <?php endforeach; ?>
-        <input id="photo" type="file" name="photo" accept="image/*"/><label for="photo" class="control-label col-sm">Upload Photo</label>
-				<?php if ($SESSION['photoError'] != NULL): ?>
+	
+	<div class="container">
+		<div class="card card-container">
+      <form action="./submit" method="post" enctype="multipart/form-data" id="location-form" class="form-signin">
+				
+				<!-- LOCATION TITLE & ERRORS-->
+				<label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control" value="<?= $SESSION['title'] ?>" required autofocus>
+				
+				<?php if ($SESSION['titleError'] != NULL): ?>
 					
-						<div class="alert-danger col-sm-8">
-							<strong>Error: </strong><span><?= $SESSION['photoError'] ?></span>
+						<div class="alert-danger">
+							<strong>Error: </strong><span><?= $SESSION['titleError'] ?></span>
 						</div>
 					
 				<?php endif; ?>
-				<div class="alert alert-danger col-sm-8">
-            <strong>Error: </strong><span id="photo-error"></span>
-        </div>
-        <input name="action" type="submit" value="Submit" class="btn">
+				
+				<div class="alert alert-danger">
+					<strong>Error: </strong><span id="title-error"></span>
+				</div>
+					
+				<!-- SUBTITLE & ERRORS-->
+				<div class="form-group">
+					<label for="subTitle">Sub Title</label>
+					<input type="text" name="subTitle" id="subTitle" class="form-control" value="<?= $SESSION['subTitle'] ?>" required>
+					
+					<?php if ($SESSION['subTitleError'] != NULL): ?>
+						
+							<div class="alert-danger col-sm-8">
+								<strong>Error: </strong><span><?= $SESSION['subTitleError'] ?></span>
+							</div>
+						
+					<?php endif; ?>
+					
+					<div class="alert alert-danger">
+						<strong>Error: </strong><span id="sub-title-error"></span>
+					</div>					
+				</div>
+
+					
+				<!-- LOCATION TITLE & ERRORS-->
+				<div class="form-group">
+					<label for="description">Description</label> <br>
+					<textarea rows="4"  name="description" id="description" class="form-control" form="location-form"><?= $SESSION['description'] ?></textarea>
+					
+					<?php if ($SESSION['descriptionError'] != NULL): ?>
+						
+							<div class="alert-danger">
+								<strong>Error: </strong><span><?= $SESSION['descriptionError'] ?></span>
+							</div>
+						
+					<?php endif; ?>
+					
+					<div class="alert alert-danger">
+						<strong>Error: </strong><span id="description-error"></span>
+					</div>					
+				</div>
+				
+					
+				<!-- OPTIONAL WARNING -->
+				<div class="form-group">
+					<label for="warning">Warning</label>
+					<input type="text" name="warning" id="warning" value="<?= $SESSION['warning'] ?>">					
+				</div>
+				
+				
+				
+				<!-- LOCATION & ERRORS -->
+				<div class="form-group">
+					<label for="location">Location</label>
+					<input type="text" name="location" id="location" value="<?= $SESSION['location'] ?>" required>
+					
+					<?php if ($SESSION['locationError'] != NULL): ?>
+						
+							<div class="alert-danger">
+								<strong>Error: </strong><span><?= $SESSION['locationError'] ?></span>
+							</div>
+						
+					<?php endif; ?>
+						
+					<div class="alert alert-danger">
+						<strong>Error: </strong><span id="location-error"></span>
+					</div>					
+				</div>
+
+					
+				<!-- LOCATION OPTIONS -->
+				<div class="form-group">
+					<label>Options</label>
+					<br>
+					<div class="row">
+						<?php foreach (($options?:[]) as $option): ?>
+							<div class="col-sm-3">
+								<input type="checkbox" name="opt[]" value="<?= $option ?>" class="checkboxes"> <?= $option.PHP_EOL ?>
+							</div>
+						<?php endforeach; ?>							
+					</div>
+				
+				</div>
+
+        
+				<!-- TYPES OF ACTIVITIES & ERRORS -->
+				<div class="form-group">
+					<label>Types of Activity</label>
+					<br>
+					<div class="row">
+						<?php foreach (($types?:[]) as $type): ?>
+							<div class="col-sm-3">
+								<input type="checkbox" name="types[]" value="<?= $type ?>"> <?= $type ?><br>
+							</div>
+						<?php endforeach; ?>						
+					</div>
+				</div>
+				
+				<!-- UPLOAD PHOTO & ERRORS -->
+				<div class="form-group">
+					<label for="photo" class="control-label col-sm">Upload Photo</label>
+					<input id="photo" type="file" name="photo" accept="image/*"/>
+					
+					<?php if ($SESSION['photoError'] != NULL): ?>
+						
+							<div class="alert-danger col-sm-8">
+								<strong>Error: </strong><span><?= $SESSION['photoError'] ?></span>
+							</div>
+						
+					<?php endif; ?>
+					
+					<div class="alert alert-danger">
+							<strong>Error: </strong><span id="photo-error"></span>
+					</div>					
+				</div>
+				
+				<!-- SUBMIT BUTTON -->
+				<hr>
+				<input class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="submit" type="submit"></input>
       </form>
     </div>
   </div>
