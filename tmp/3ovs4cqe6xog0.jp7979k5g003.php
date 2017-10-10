@@ -1,6 +1,3 @@
-<!- Caleb Ostrander
-    Blog Assignment
-/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +18,7 @@
 
   <!-- Custom CSS -->
   <link href="./css/layout.css" rel="stylesheet">
-  <link href="./css/index.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="./css/signup.css" rel="stylesheet">
   
 </head>
 <body>
@@ -32,87 +28,65 @@
     <?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
   <?php endif; ?>
   
-<div class="col-md-12 page-content">
   <div class="container">
-    <div class="container-fluid">
-      <div class="row content">
-        <div class="col-sm-9">
-          <div class="row">
-            <div class="col-sm-9">
-              <h1>Become a User!</h1>
-              <h4>Create a new account below</h4>
-            </div>
-          </div>
-          <div class="row">
-            <form action="./submit-user" method="post" enctype="multipart/form-data" id="user-form" class="form-vertical">
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <input type="text" id="username" class="form-control" name="username" placeholder="Username" value="<?= $SESSION['username'] ?>" required>
-                  </div>
-                  <div class="col-sm-4">
-                    <label for="username" class="control-label col-sm">Username</label>
-                  </div>
-                  <div class="alert alert-danger col-sm-8">
-                    <strong>Error: </strong><span id="username-error"></span>
-                  </div>
-                  <?php if ($SESSION['usernameError'] != NULL): ?>
-                    
-                      <div class="alert-danger col-sm-8">
-                        <strong>Error: </strong><span><?= $SESSION['usernameError'] ?></span>
-                      </div>
-                    
-                  <?php endif; ?>
-                </div>
-                <div class="row">
-                  <div class="col-sm-8">
-                    <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
-                  </div>
-                  <div class="col-sm-4">
-                    <label for="password" class="control-label col-sm">Password</label>
-                  </div>
-                  <div class="alert alert-danger col-sm-8">
-                    <strong>Error: </strong><span id="password-error"></span>
-                  </div>
-                  <?php if ($SESSION['passwordError'] != NULL): ?>
-                    
-                      <div class="alert-danger col-sm-8">
-                        <strong>Error: </strong><span><?= $SESSION['passwordError'] ?></span>
-                      </div>
-                    
-                  <?php endif; ?>
-                </div>
-                <div class="row">
-                  <div class="col-sm-8">
-                    <input type="password" id="verify" class="form-control" name="verify" placeholder="Verify" required>
-                  </div>
-                  <div class="col-sm-4">
-                    <label for="verfiy" class="control-label col-sm">Verify</label>
-                  </div>
-                  <div class="alert alert-danger col-sm-8">
-                    <strong>Error: </strong><span id="verify-error"></span>
-                  </div>
-                  <?php if ($SESSION['verifyError'] != NULL): ?>
-                    
-                      <div class="alert-danger col-sm-8">
-                        <strong>Error: </strong><span><?= $SESSION['verifyError'] ?></span>
-                      </div>
-                    
-                  <?php endif; ?>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col text-center">
-                  <input name="action" type="submit" value="Create Account!" class="btn">
-                </div>
-              </div>
-            </form>
-          </div>
+    <div class="card card-container">
+        <div class="row">
+          <img class="card-img-top" src="./images/signup.png">
         </div>
-      </div>
-    </div>
+			
+        <form action="./submit-user" method="post" enctype="multipart/form-data" id="user-form"  id="registration-form" class="form-signin form-vertical"autocomplete="on">
+          
+          <!-- USERNAME + ERROR MESSAGE -->
+          <input type="text" id="username" class="form-control" name="username" placeholder="Username" value="<?= $SESSION['username'] ?>" required autofocus>
+          <div class="alert alert-danger">
+            <strong>Error:</strong> <span id="username-error"></span>
+          </div>
+          <?php if ($SESSION['usernameError'] != NULL): ?>
+            
+              <div class="alert-danger">
+                <strong>Error: </strong><span><?= $SESSION['usernameError'] ?></span>
+              </div>
+            
+          <?php endif; ?>
+          
+          <!-- PASSWORD SECTION + ERROR MESSAGE -->
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+          <div class="alert alert-danger">
+            <strong>Error:</strong> <span id="password-error"></span>
+          </div>
+          <?php if ($SESSION['passwordError'] != NULL): ?>
+            
+              <div class="alert-danger">
+                <strong>Error: </strong><span><?= $SESSION['passwordError'] ?></span>
+              </div>
+            
+          <?php endif; ?>
+          
+          
+          <!-- VERIFY PASSWORD SECTION + ERROR MESSAGE -->
+          <input type="password" name="verify" id="verify" class="form-control" placeholder="Verify Password">
+          <div class="alert alert-danger">
+            <strong>Error:</strong> <span id="verify-error"></span>
+          </div>
+          <?php if ($SESSION['verifyError'] != NULL): ?>
+            
+              <div class="alert-danger">
+                <strong>Error: </strong><span><?= $SESSION['verifyError'] ?></span>
+              </div>
+            
+          <?php endif; ?>
+          
+          <!-- SUBMIT BUTTON -->
+          <hr>
+          <button class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="submit" type="submit">
+              SIGN ME UP
+          </button>
+          
+        </form>
+    </div><!-- /card-container -->
   </div>
-</div>
+     
+
 <?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
 </body>
 </html>
