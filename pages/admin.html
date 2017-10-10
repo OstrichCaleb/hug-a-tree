@@ -1,0 +1,29 @@
+<form role="form" method="post" action="./change-users">
+  
+  <check if="isset({{ @warning }})">
+    <true><h1>{{ @warning }}</h1></true>
+  </check>
+
+  <table>
+    <tr>
+      <td>Username</td>
+      <td>ID</td>
+      <td>Type</td>
+      <td>Make Admin</td>
+    </tr>
+    <repeat group="{{ @users }}" value="{{ @user }}">
+      <tr>
+        <td>{{ @user->getUsername() }}</td>
+        <td>{{ @user->getId() }}</td>
+        <check if="{{ @user->getType() }} == 0">
+          <true><td>User</td></true>
+          <false><td>Admin</td></false>
+        </check>
+        <td><input type="checkbox" name="change[{{ @user->getId() }}]" value="{{ @user->getId() }}"></td>
+      </tr>
+    </repeat>
+  </table>
+  <input id="admin" name="admin" type="submit" value="Make Admin">
+  <input id="delete" name="delete" type="submit" value="Delete">
+  <input id="user" name="user" type="submit" value="Make User">
+</form>

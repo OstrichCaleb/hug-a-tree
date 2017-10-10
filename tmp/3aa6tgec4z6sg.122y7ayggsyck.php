@@ -9,6 +9,7 @@
 
     <title>Hug A Tree - Home</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" />
     
     <script src="https://use.fontawesome.com/b9f1530c0e.js"></script> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,49 +20,12 @@
 </head>
 
 <body>
-    <div class="navbar-fixed-top">
-        <div class="top-wrapper">
-            <ul class="nav navbar-nav pull-right">
-                <li><a href="">ABOUT</a></li> 
-                <li>
-                    <form class="form-inline">
-                    <div class="input-group">
-                        <span class="input-group-addon" id="site-search"><i class="fa fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="site search" aria-describedby="site-search">
-                    </div>
-                    </form>
-                </li>
-            </ul> 
-        </div>
-        <nav class="navbar navbar-default bottom-wrapper" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home-nav">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            
-            <div class="col-md-12">
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="home-nav">
-                    <ul class="nav navbar-nav">
-                        <li id="logo"><img src="./images/hugatree.png" alt=""></li>
-                        <li><a href="#">HIKING</a></li>
-                        <li><a href="#">BIKING</a></li>
-                        <li><a href="#">CHILLING</a></li>
-                        <li><a href="#">JOIN</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav pull-right">
-                        <li><a href="#">SIGNUP/ POST NEW/ LOGIN</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </nav>
-    </div>
+    
+    <?php if ($SESSION['id'] == NULL): ?>
+		<?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+		<?php else: ?><?php echo $this->render('includes/user-nav.inc.html',NULL,get_defined_vars(),0); ?>
+	<?php endif; ?>
+    
     <div class="landscape" >
         <!-- Navigation -->
         <div class="display-text">
@@ -73,7 +37,7 @@
         <div class="container">
             <div class="col-md-4 box-1">
             <div class="media">
-                <a href="index.html"> 
+                <a href="./hiking"> 
                 <div class="media-left media-middle">
                     <i class="text-left fa fa-map" aria-hidden="true"></i>
                 </div>
@@ -87,7 +51,7 @@
         
         <div class="col-md-4">
             <div class="media">
-                <a href="index.html"> 
+                <a href="./biking"> 
                 <div class="media-left media-middle">
                     <i class="text-left fa fa-bicycle" aria-hidden="true"></i>
                 </div>
@@ -101,7 +65,7 @@
         
         <div class="col-md-4 box-2">
             <div class="media">
-                <a href="index.html"> 
+                <a href="./chilling"> 
                 <div class="media-left media-middle">
                     <i class="text-left fa fa-binoculars" aria-hidden="true"></i>
                 </div>
@@ -128,10 +92,9 @@
                     <img src="https://static.seattletimes.com/wp-content/uploads/2015/05/9544755a-f377-11e4-9a2c-0474b50dc961-780x520.jpg" class="img-thumbnail img-fluid"/>
                     
                     <div class="card-content">
-                        <h3 class="text-center">Easy Pass Trail</h3>
-                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i>Hiking trail</h2>
-                        <a href="#">Location: somewhere in Washington</a>
-                        <p>Posted by: user1 <span class="pull-right">05/31/2017</span></p>
+                        <h3 class="text-center"><?= ($top1->getMainTitle()) ?></h3>
+                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i><?= ($top1->getType()) ?></h2>
+                        <a href="#">Location: <?= ($top1->getLocation()) ?></a>
                     </div>
                 </div>
             </div>
@@ -143,10 +106,9 @@
                     <img src="https://cdn-files.apstatic.com/mtb/7005794_medium_1444246717.jpg" class="img-thumbnail img-fluid"/>
                     
                     <div class="card-content">
-                        <h3 class="text-center">Tiger Mountain Loop</h3>
-                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i>Biking route</h2>
-                        <a href="#">Location: somewhere else in Washington</a>
-                        <p>Posted by: user2 <span class="pull-right">05/29/2017</span></p>
+                        <h3 class="text-center"><?= ($top2->getMainTitle()) ?></h3>
+                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i><?= ($top2->getType()) ?></h2>
+                        <a href="#">Location: <?= ($top2->getLocation()) ?></a>
                     </div>
                 </div>
             </div>
@@ -159,10 +121,9 @@
                     <img src="http://www.planetware.com/photos-large/USWA/us-washington-state-port-angeles.jpg" class="img-thumbnail img-fluid"/>
                     
                     <div class="card-content">
-                        <h3 class="text-center">Hurricane Ridge</h3>
-                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i>Chilling spot</h2>
-                        <a href="#">Location: somewhere else in Washington</a>
-                        <p>Posted by: user3 <span class="pull-right">05/30/2017</span></p>
+                        <h3 class="text-center"><?= ($top3->getMainTitle()) ?></h3>
+                        <h2><i class="fa fa-hashtag" aria-hidden="true"></i><?= ($top3->getType()) ?></h2>
+                        <a href="#">Location: <?= ($top3->getLocation()) ?></a>
                     </div>
                 </div>
             </div>
@@ -205,48 +166,8 @@
     
     
     <!-- ABOUT US ENDS -->
+    <?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
     
-    <!-- FOOTER ENDS -->
-    <footer>
-        <div class="container">
-            <div class="col-md-6 footer-left">
-                <div class="col-md-6">
-                    <h3>OUR GUIDES</h3>
-                    <h4><a href="">Hiking</a></h4>
-                    <h4><a href="">Biking</a></h4>
-                    <h4><a href="">Chilling</a></h4>
-                </div>
-                <div class="col-md-6 creators">
-                    <h3>CREATORS</h3>
-                    <h4>Caleb Ostrander</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                    <h4>Duck Nguyen</h4>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-globe" aria-hidden="true"></i></a>
-                    
-                </div>
-            </div>
-            <div class="col-md-6 footer-right">
-                <div class="col-md-6">
-                    <h3>CONTACT US</h3>
-                    <p>
-                        Hug-a-tree<br>
-                        Kent Station, 417 Ramsay Way<br>
-                        Suite 112, Kent, WA 98032<br>
-                    </p>
-                    <p>(253) 555-5555</p>
-                </div>
-                <div class="col-md-6 text-left">
-                    <img src="./images/hugatree.png">
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- FOOTER ENDS -->
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 

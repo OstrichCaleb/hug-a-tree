@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Activity' => $baseDir . '/model/activities.php',
+    'Admin' => $baseDir . '/model/admin.php',
     'Audit' => $vendorDir . '/bcosca/fatfree-core/audit.php',
     'Auth' => $vendorDir . '/bcosca/fatfree-core/auth.php',
     'Base' => $vendorDir . '/bcosca/fatfree-core/base.php',
@@ -25,7 +26,6 @@ return array(
     'DB\\SQL' => $vendorDir . '/bcosca/fatfree-core/db/sql.php',
     'DB\\SQL\\Mapper' => $vendorDir . '/bcosca/fatfree-core/db/sql/mapper.php',
     'DB\\SQL\\Session' => $vendorDir . '/bcosca/fatfree-core/db/sql/session.php',
-    'Dog' => $baseDir . '/model/admin-user.php',
     'F3' => $vendorDir . '/bcosca/fatfree-core/f3.php',
     'HugATreeDB' => $baseDir . '/model/hug-a-tree-db.php',
     'ISO' => $vendorDir . '/bcosca/fatfree-core/base.php',
@@ -43,6 +43,7 @@ return array(
     'Test' => $vendorDir . '/bcosca/fatfree-core/test.php',
     'UTF' => $vendorDir . '/bcosca/fatfree-core/utf.php',
     'User' => $baseDir . '/model/user.php',
+    'UserDB' => $baseDir . '/model/user-db.php',
     'View' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'Web' => $vendorDir . '/bcosca/fatfree-core/web.php',
     'Web\\Geo' => $vendorDir . '/bcosca/fatfree-core/web/geo.php',

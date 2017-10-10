@@ -1,81 +1,105 @@
 <?php
     class Activity
     {
-        private $_title;
-        private $_description;
-        private $_location;
-        private $_warning;
-        private $_options[];
-        private $_pictures[];
+        protected $main_title;
+        protected $description;
+        protected $location;
+        protected $warning;
+        protected $options = array();
+        protected $picture;
+        protected $sub_title;
+        protected $type;
         
-        function __construct($title, $description, $location, $warning = "", $options, $pictures)
+        function __construct($main_title, $description, $location, $warning = "", $sub_title="", $picture = "", $options = "", $type = "NA")
         {
-            $this->_title = $title;
-            $this->_description = $description;
-            $this->_location = $location;
-            $this->_warning = $warning;
-            $this->_options = $options;
-            $this->_pictures = $pictures;
+            $this->main_title = $main_title;
+            $this->description = $description;
+            $this->location = $location;
+            $this->warning = $warning;
+            $this->options = $options;
+            $this->picture = $picture;
+            $this->sub_title = $sub_title;
+            $this->type = $type;
         }
         
-        public function getTitle()
+        public function getMainTitle()
         {
-          return $this->_title;
+          return $this->main_title;
         }
       
-        public function setTitle($title)
+        public function setMainTitle($title)
         {
-          $this->_title = $title;
+          $this->main_title = $title;
+        }
+        
+        public function getSubTitle()
+        {
+          return $this->sub_title;
+        }
+      
+        public function setSubTitle($title)
+        {
+          $this->sub_title = $title;
         }
       
         public function getDescription()
         {
-          return $this->_description;
+          return $this->description;
         }
       
         public function setDescription($description)
         {
-          $this->_description = $description;
+          $this->description = $description;
         }
       
         public function getLocation()
         {
-          return $this->_location;
+          return $this->location;
         }
       
         public function setLocation($location)
         {
-          $this->_location = $location;
+          $this->location = $location;
         }
       
         public function getWarning()
         {
-          return $this->_warning;
+          return $this->warning;
         }
       
         public function setWarning($warning)
         {
-          $this->_warning = $warning;
+          $this->warning = $warning;
         }
       
         public function getOptions()
         {
-          return $this->_options;
+          return $this->options;
         }
       
         public function setOptions($options)
         {
-          $this->_options = $options;
+          $this->options = $options;
+        }
+        
+        public function getPicture()
+        {
+          return $this->picture;
         }
       
-        public function getPictures()
+        public function setPicture($picture)
         {
-          return $this->_pictures;
+          $this->picture = $picture;
+        }
+        
+        public function getType()
+        {
+          return $this->type;
         }
       
-        public function setPictures($pictures)
+        public function setType($type)
         {
-          $this->_pictures = $pictures;
+          $this->type = $type;
         }
     }
     
