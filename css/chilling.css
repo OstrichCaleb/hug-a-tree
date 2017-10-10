@@ -1,7 +1,7 @@
 .landscape{
 	margin-top:3em;
 	height:80%;
-	background-image: url('http://eskipaper.com/images/scenic-wallpaper-15.jpg');
+	background-image: url('../images/chilling.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -28,6 +28,7 @@
 	background-color:#F3F3F3;
 	padding-top:1em;
 	padding-bottom:1em;
+	margin-bottom:2em;
 }
 .chill-location img{
 	height:300px;

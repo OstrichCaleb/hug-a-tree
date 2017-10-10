@@ -3,13 +3,9 @@ html{
 	height:100%;
 }
 .landscape{
-	margin-top:3em;
-<<<<<<< HEAD
-	background-image: url('http://allswalls.com/images/lake-forest-mountains-wallpaper-1.jpg');
-=======
-	background-image: url('https://www.omnihotels.com/-/media/images/globals/activities/hiking_465912421.jpg');
->>>>>>> 20bf09195575b2ae283025107fe129bea5817e8c
-	height:80%;
+	margin-top:1em;
+	background-image: url('../images/wa-life.jpg');
+	height:75%;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -121,7 +117,7 @@ html{
 
 .bottom-landscape{
 	height:70%;
-	background-image: url('http://mostnature.com/wp-content/uploads/2016/08/mountains-trees-landscape-seasonal-fall-leaves-autumn-colors-wallpaper-1920x1080-1366x768.jpg');
+	background-image: url('../images/autumn-colors.jpg');
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
