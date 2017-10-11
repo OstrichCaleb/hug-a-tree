@@ -246,7 +246,7 @@ $f3->route('GET|POST /submit', function($f3) {
 			}
 			
 			if (!isset($_POST['password']) || !validatePass($_POST['password'])){
-				$f3->set('SESSION.passwordError', 'IDK');
+				$f3->set('SESSION.passwordError', 'Password must be 6 characters and must have a number and special character');
 				$check = true;
 			}
 			

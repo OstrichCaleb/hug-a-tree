@@ -9,7 +9,7 @@ $(document).ready(function(){
 function validate(event)
 {
     //Prevent the form from submitting
-    event.preventDefault();
+    //event.preventDefault();
     
     // Remove old error messages
     removeErrors();
@@ -52,8 +52,8 @@ function validate(event)
     }
     
     // submit the form if all data is good
-    if (!isError){
-        $("#location-form").submit();
+    if (isError){
+        return false;
     }
 }
 

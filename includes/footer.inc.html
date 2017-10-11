@@ -3,9 +3,9 @@
             <div class="col-md-6 footer-left">
                 <div class="col-md-6">
                     <h3>OUR GUIDES</h3>
-                    <h4><a href="/hiking">Hiking</a></h4>
-                    <h4><a href="/biking">Biking</a></h4>
-                    <h4><a href="/chilling">Chilling</a></h4>
+                    <h4><a href="./hiking">Hiking</a></h4>
+                    <h4><a href="./biking">Biking</a></h4>
+                    <h4><a href="./chilling">Chilling</a></h4>
                 </div>
                 <div class="col-md-6 creators">
                     <h3>CREATORS</h3>

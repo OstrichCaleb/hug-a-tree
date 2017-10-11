@@ -34,7 +34,7 @@
           <img class="card-img-top" src="./images/signup.png">
         </div>
 			
-        <form action="./submit-user" method="post" enctype="multipart/form-data" id="user-form"  id="registration-form" class="form-signin form-vertical"autocomplete="on">
+        <form action="./submit-user" method="post" enctype="multipart/form-data" id="user-form" class="form-signin form-vertical" autocomplete="on">
           
           <!-- USERNAME + ERROR MESSAGE -->
           <input type="text" id="username" class="form-control" name="username" placeholder="Username" value="{{ @SESSION.username }}" required autofocus>
@@ -78,9 +78,8 @@
           
           <!-- SUBMIT BUTTON -->
           <hr>
-          <button class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="submit" type="submit">
-              SIGN ME UP
-          </button>
+          <input class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="submit" type="submit" value="SIGN ME UP">
+          </input>
           
         </form>
     </div><!-- /card-container -->
