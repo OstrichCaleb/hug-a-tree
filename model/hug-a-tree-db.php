@@ -152,7 +152,7 @@ require '/home/costrander/hug-config.php';
         
         function getMostRecent()
         {
-            $select =  "SELECT * FROM entries";
+            $select =  "SELECT * FROM entries ORDER BY entry_id DESC";
             
             $results = $this->_pdo->query($select);
              

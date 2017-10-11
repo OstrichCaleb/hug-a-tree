@@ -1,78 +1,80 @@
-<!- Caleb Ostrander
-    Blog Assignment
-/>
 <!DOCTYPE html>
 <html lang="en">
-  
-  
-  <head>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Login</title>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-  <link rel="shortcut icon" href="favicon.ico" />
-  
-  <script src="https://use.fontawesome.com/b9f1530c0e.js"></script> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Duck Nguyen">
+    <meta name="description" content="Duck Nguyen Portfolio Homepage">
 
-  <!-- Custom CSS -->
-  <link href="./css/layout.css" rel="stylesheet">
-  <link href="./css/index.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  
+    <title>Hug A Tree | Login</title>
+	
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" />
+	
+    <script src="https://use.fontawesome.com/b9f1530c0e.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link href="./css/layout.css" rel="stylesheet">
+    <link href="./css/login.css" rel="stylesheet">
 </head>
 <body>
+	
+	<?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
+	
+	<div class="container">
+        <div class="card card-container">
+			
+			<div class="row">
+				<img class="card-img-top" src="./images/login.png">
+			</div>
+			
+            <form id="login-form" class="form-signin" action="./login" method="post" autocomplete="on">
+                <!-- EMAIL SECTION + ERROR MESSAGE -->
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus required>
+                <div class="alert alert-danger">
+					<strong>Error:</strong> <span id="emailErr"></span>
+				</div>
+                
+                <!-- PASSWORD SECTION + ERROR MESSAGE -->
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 
-<div class="container-fluid">
-  <div class="row content">
-    
-    <?php echo $this->render('includes/nav.inc.html',NULL,get_defined_vars(),0); ?>
-
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-sm-9">
-          <h1>Welcome back!</h1>
-          <h4>Please log in below</h4>
-        </div>
-        <div class="col-sm-3">
-          <img src="#">
-        </div>
-      </div>
-      <div class="row text-center">
-        <div class="col">
-          <form action="./login" method="post" class="form-vertical">
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <div class="row">
-                  <div class="form-group col-sm-8">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-                  </div>
-                  <div class="form-group col-sm-4">
-                    <label for="username" class="control-label col-sm">Username</label>
-                  </div>
-                  <div class="form-group col-sm-8">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                  </div>
-                  <div class="form-group col-sm-4">
-                    <label for="password" class="control-label col-sm">Password</label>
-                  </div>
+                <div class="alert alert-danger">
+					<strong>Error:</strong> <span id="passErr"></span>
+				</div>
+				
+                
+                <!-- REMEMBER ME + SIGNIN BUTTON-->
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" name="rememberMe" value="remember-me"> Remember me
+                    </label>
                 </div>
-              </div>
-            </div>
-            <div class="form-group">
-                <input name="action" type="submit" value="Login" class="btn btn-success">
-            </div>
-          </form>
-        </div>
-      </div>
+               
+                <input class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="submit" type="submit" value="Sign in">
+                </input>
+				
+				<!--FORGOT YOUR PASSWORD-->
+				<div>
+					<a href="forgotpassword.php" class="forgot-password">
+						Forgot the password?
+					</a>
+				</div>
+				
+				
+            </form>
+        </div><!-- /card-container -->
     </div>
-  </div>
-</div>
-<?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
+	
+	<?php echo $this->render('includes/footer.inc.html',NULL,get_defined_vars(),0); ?>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script src="../js/login-validate.js"></script>
 </body>
 </html>
