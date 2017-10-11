@@ -47,6 +47,23 @@ form{
     margin-top:-3em;
 }
 
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px){
+    .navbar-default .navbar-nav > li > a{
+        background-color:white;
+        display: block;
+        margin: 0 auto;
+    }
+    .navbar-default .navbar-nav > li > a:hover{
+        background-color:white;
+        color:#795548;
+    }
+    #logo img{
+        display: none;
+    }
+    
+}
 footer{
 	background-color:#003029;
 	padding-bottom: 1.5em;

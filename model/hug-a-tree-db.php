@@ -38,7 +38,11 @@ require '/home/costrander/hug-config.php';
             }
         }
         
-        // Create a new entry
+        /**
+         * A method to add entry to the database
+         *
+         *@param The entry object that you want to update
+         */
         function addEntry($entry)
         {
             $insert = 'INSERT INTO entries (main_title, description, warning, location, sub_title)
@@ -58,7 +62,12 @@ require '/home/costrander/hug-config.php';
         
         }
         
-        // Add options to an entry
+        /**
+         * A method to update entry to the database
+         *
+         *@param The entry object that you want to update
+         *@param The options you will use
+         */
         function addEntryOption($id, $opts)
         {
             $insert = 'INSERT INTO entry_options (entry_id, opt_id) VALUES (:entry, :opt)';
@@ -74,7 +83,11 @@ require '/home/costrander/hug-config.php';
             }        
         }
         
-        // Add types to an entry
+        /**
+         * A method to add entry type to the database
+         *
+         *@param The entry type that you want to update
+         */
         function addEntryType($id, $types)
         {
             $insert = 'INSERT INTO entry_types (entry_id, type_id) VALUES (:entry, :type)';
@@ -104,7 +117,11 @@ require '/home/costrander/hug-config.php';
             return $row['options_id'];
         }
         
-        // Get type id for adding to entry_options
+        /**
+         * A method to get entry to the database
+         *
+         *@param The entry type that you want to get
+         */
         function getTypeId($type)
         {
             $select = "SELECT type_id FROM types WHERE type = :type";
@@ -118,7 +135,10 @@ require '/home/costrander/hug-config.php';
             return $row['type_id'];
         }
         
-        // Get all the options
+        /**
+         * A method to get options to the database
+         *
+         */
         function getOptions()
         {
             $select = "SELECT * FROM options";
@@ -134,7 +154,11 @@ require '/home/costrander/hug-config.php';
             return $resultsArray;
         }
         
-        // Get all the types
+        /**
+         * A method to get all types from the database
+         *
+         *@return All the types
+         */
         function getTypes()
         {
             $select = "SELECT * FROM types";
@@ -150,6 +174,11 @@ require '/home/costrander/hug-config.php';
             return $resultsArray;
         }
         
+        /**
+         * A method to get the most recent entries
+         *
+         *@return The newest entries
+         */
         function getMostRecent()
         {
             $select =  "SELECT * FROM entries ORDER BY entry_id DESC";
@@ -170,6 +199,11 @@ require '/home/costrander/hug-config.php';
             return $resultsArray;
         }
         
+        /**
+         * A method to get hike to the database
+         *
+         *@param The entry type that you want to update
+         */
         function getHikeIDs($type)
         {
             $select =  "SELECT entry_id FROM entry_types WHERE type_id = :id";
@@ -189,6 +223,11 @@ require '/home/costrander/hug-config.php';
             return $idArray;
         }
         
+        /**
+         * A method to get hikes based on type
+         *
+         *@param The entry type that you want to get objects from
+         */
         function getHikes($type)
         {
             $idArray = $this->getHikeIDs($type);
@@ -219,6 +258,11 @@ require '/home/costrander/hug-config.php';
             return $resultsArray;
         }
         
+        /**
+         * A method to get entry photos to the database
+         *
+         *@param The entry id that you want to get pics from
+         */
         function getEntryPhotos($id)
         {
             $select = "SELECT link FROM pictures WHERE entry_id = :id";
@@ -232,6 +276,11 @@ require '/home/costrander/hug-config.php';
             return $row['link'];
         }
         
+        /**
+         * A method to add entry photo to the database
+         *
+         *@param The entry photo that you want to update
+         */
         function addEntryPhoto($id, $link)
         {
             $insert = 'INSERT INTO pictures (entry_id, link) VALUES (:entry, :link)';
@@ -243,6 +292,11 @@ require '/home/costrander/hug-config.php';
             $statement->execute();
         }
         
+        /**
+         * A method to add entry options to the database
+         *
+         *@param The entry id that you want to update
+         */
         function getEntryOptions($id)
         {
             $select = "SELECT opt_id FROM entry_options WHERE entry_id = :id";
@@ -261,6 +315,11 @@ require '/home/costrander/hug-config.php';
             return $resultsArray;
         }
         
+        /**
+         * A method to add entry option description to the database
+         *
+         *@param The entry object id that you want to update
+         */
         function getOptionDescription($id)
         {
             $select = "SELECT description FROM options WHERE options_id = :id";
@@ -320,6 +379,12 @@ require '/home/costrander/hug-config.php';
             return $this->_pdo->lastInsertId();
         }
         
+        /**
+         * A method to login the user
+         *
+         *@param The username you want to login
+         *@return the credentials of who was logged in
+         */
         function login($user)
         {
             $select = 'SELECT user_id, password, type FROM users WHERE username = :user';
@@ -366,6 +431,11 @@ require '/home/costrander/hug-config.php';
             
         }
         
+        /**
+         * A method to get all the users from the database
+         *
+         *@return an array of all the users
+         */
         function allUsers()
         {
             $select = "SELECT * FROM users";
@@ -386,7 +456,13 @@ require '/home/costrander/hug-config.php';
             
             return $resultsArray;
         }
-        
+       
+       /**
+         * A method to change a user to admin
+         *
+         *@param The user to update
+         *@param The type you want them to turn into
+         */ 
         function updateUser($id, $type)
         {
             if ($type == 0){
@@ -401,6 +477,11 @@ require '/home/costrander/hug-config.php';
             $statement->execute();
         }
         
+        /**
+         * A method to delete user
+         *
+         *@param The id that of the user you want to delete
+         */
         function delUser($id)
         {
             $select = "DELETE FROM users WHERE user_id = :id";
